@@ -6,47 +6,41 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/19 16:00:43 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/01/20 16:33:47 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	check_next(char *format, int i, va_list va)
+void	init_struct(t_struct *form)
 {
-	while (format[i++])
-	{
-		if (format[i] == 'd')
-		{
-			ft_putnbr(va_arg(va, int));
-			return (1);
-		}
-		else if (format[i] == 'c')
-		{
-			ft_putchar(va_arg(va, char));
-			return (1);
-		}
-		else if (format[i] == 's')
-		{
-			ft_putstr(va_arg(va, char *));
-			return (1);
-		}
-	}
-	return (0);
-} 
+	form->block = NULL;
+	form->hash = 0;
+	form->minus = 0;
+	form->positive = 0;
+	form->zero = 0;
+	form->space = 0;
+	form->large = 0;
+	form->prec = 0;
+	form->size = 0;
+	form->type = 0;
+}
 
 int	ft_printf(const char *format, ...)
 {
-	va_list	va;
-	int		i;
+	va_list		va;
+	int			i;
 
-	va_start(format, va);
+	va_start(va, format);
 	i = 0;
-	while (format[i++])
+	while (format[i])
 	{
 		if (format[i] == '%')
-			if ((check_next(format, i, va)) == 1)
+		{
+			if ((check_format(format + i + 1)) == 1)
 				return (1);
+		}
+		i++;
 	}
 	va_end(va);
 	return (0);
@@ -56,7 +50,7 @@ int	main()
 {
 	char *string;
 
-	string = "Puuuuuuuuuull-Up";
+	string = "Puuuuuuuuuuuuuuuuh";
 	ft_printf("%s", string);
 	return (0);
 }
