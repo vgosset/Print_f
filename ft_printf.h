@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/20 16:33:26 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/01/22 13:58:27 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../Libft/libft.h"
 # include <stdarg.h>
+# include <stdio.h>
 
 typedef struct	s_struct
 {
@@ -24,7 +25,7 @@ typedef struct	s_struct
 	int			positive;
 	int			zero;
 	int			space;
-	int			large;
+	int			minimal_large;
 	int			prec;
 	char		size;
 	char		type;
@@ -32,7 +33,9 @@ typedef struct	s_struct
 
 int				ft_printf(const char *format, ...);
 int				check_format(const char *format);
-int				check_block(const char *format, t_struct *form);
+int				check_options(const char format, t_struct *form);
+void			check_minimal_large(const char format, t_struct *form);
+void			check_precision(const char *format, t_struct *form);
 
 void			init_struct(t_struct *form);
 

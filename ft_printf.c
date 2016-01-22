@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/20 16:33:47 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/01/22 13:58:24 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_struct(t_struct *form)
 	form->positive = 0;
 	form->zero = 0;
 	form->space = 0;
-	form->large = 0;
+	form->minimal_large = 0;
 	form->prec = 0;
 	form->size = 0;
 	form->type = 0;
@@ -30,12 +30,14 @@ int	ft_printf(const char *format, ...)
 {
 	va_list		va;
 	int			i;
+	int			len;
 
 	va_start(va, format);
 	i = 0;
+	len = 0;
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1] != '%')
 		{
 			if ((check_format(format + i + 1)) == 1)
 				return (1);
@@ -43,7 +45,7 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(va);
-	return (0);
+	return (len);
 }
 
 int	main()
