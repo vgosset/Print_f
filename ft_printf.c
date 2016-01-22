@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/22 13:58:24 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/01/22 17:23:28 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ void	init_struct(t_struct *form)
 	form->space = 0;
 	form->minimal_large = 0;
 	form->prec = 0;
-	form->size = 0;
+	form->hh = 0;
+	form->h = 0;
+	form->l = 0;
+	form->ll = 0;
+	form->j = 0;
+	form->z = 0;
 	form->type = 0;
 }
 

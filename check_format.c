@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 15:50:13 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/22 13:58:35 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/01/22 17:23:25 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ int	check_format(const char *format)
 			i++;
 		}
 		if (format[i] == '.')
-			check_precision(format + 1, &form);
+		{
+			while (format[++i] && (format[++i] - 48 >= '0'
+						&& format[++i] - 48 <= '9'))
+				check_precision(format[i], &form);
+		}
 		i++;
 	}
 	return (1);
@@ -58,14 +62,7 @@ void	check_minimal_large(const char format, t_struct *form)
 	form->minimal_large = form->minimal_large * 10 + (format - 48);
 }
 
-void	check_precision(const char *format, t_struct *form)
+void	check_precision(const char format, t_struct *form)
 {
-	int	i;
-
-	i = 0;
-	while (format[i] && (format[i] - 48 >= '0' && format[i] - 48 <= '9'))
-	{
-		form->prec = form->prec * 10 + format[i] - 48;
-		i++;
-	}
+	form->prec = form->prec * 10 + format - 48;
 }
