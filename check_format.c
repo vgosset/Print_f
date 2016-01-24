@@ -34,9 +34,15 @@ int	check_format(const char *format)
 						&& format[++i] - 48 <= '9'))
 				check_precision(format[i], &form);
 		}
-		if (format[i] == 'h' || format[i] == 'l' || format[i] == 'j'
-				|| format[i] == 'z')
+		while (format[i] == 'h' || format[i] == 'l' || format[i] == 'j'
+			|| format[i] == 'z')
+		{
 			check_size_modifier(format + i, &form);
+			i++;
+		}
+		if (format[i] == 'd' || format[i] == 'i' || format[i] == 'c'
+			|| format[i] == 's' || format[i] == 'f') // TO COMPLETE
+			(&form)->type = format[i];
 		i++;
 	}
 	return (1);
@@ -67,7 +73,7 @@ void	check_minimal_large(const char format, t_struct *form)
 
 void	check_precision(const char format, t_struct *form)
 {
-	form->prec = form->prec * 10 + format - 48;
+	form->prec = form->prec * 10 + (format - 48);
 }
 
 void	check_size_modifier(const char *format, t_struct *form)
