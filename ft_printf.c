@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/26 16:33:51 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/01/26 20:09:45 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,25 @@ int		ft_printf(const char *format, ...)
 	len = 0;
 	while (format[i])
 	{
-		if (format[i] == '%' && format[i + 1] != '%')
+		if (format[i] == '%' && format[i + 1] == '%')
+			i += 2;
+		else if (format[i] == '%' && format[i + 1] != '%')
 		{
 			if ((check_format(format + i + 1)) == -1)
 				return (-1);
-			else
-				
 		}
 		i++;
 	}
+	len = set_format(format, va);
 	va_end(va);
 	return (len);
 }
 
 int		main(void)
 {
-	char *string;
+	char string;
 
-	string = "Puuuuuuuuuuuuuuuuh";
-	ft_printf("%-+3242llD", string);
+	string = 'P';
+	ft_printf("aaa %c%c", string, string);
 	return (0);
 }

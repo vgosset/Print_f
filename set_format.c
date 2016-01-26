@@ -5,46 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/26 11:44:06 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/26 16:33:59 by jle-quer         ###   ########.fr       */
+/*   Created: 2016/01/26 18:01:00 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/01/26 20:09:51 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	check_type(const char format)
-{
-	if (format == 's' || format == 'S' || format == 'p'
-		|| format == 'd' || format == 'D' || format == 'i'
-		|| format == 'o' || format == 'O' || format == 'u'
-		|| format == 'U' || format == 'x' || format == 'X'
-		|| format == 'c' || format == 'C' || format == 'E')
-		return (1);
-	else
-		return (0);
-}
-
-int	check_block(char *block, t_struct *form)
+int	set_format(const char *format, va_list va)
 {
 	int	i;
 
 	i = 0;
-	form->block = block;
-	while (form->block[i])
+	while (format[i])
 	{
-		if (form->block[i] == form->type)
+		while (format[i] && format[i] != '%')
 		{
-			if (form->block[i + 1] != '\0')
-				return (-1);
+			ft_putchar(format[i]);
+			i++;
 		}
+		if (format[i] == '%' && format[i + 1] == '%')
+		{
+			ft_putchar(format[i]);
+			i += 2;
+		}
+		else if (format[i] == '%' && format[i + 1] != '%')
+			return (set_block(format + i + 1, va));
 		i++;
 	}
-	if ((form->hh + form->h + form->l + form->ll + form->j + form->z) > 1)
-		return (-1);
-	if (form->type == 0)
-		return (-1);
-	if ((form->minus > 0 && form->zero > 0)
-			|| (form->positive > 0 && form->space > 0))
-		return (-1);
-	return (1);
+	return (-1);
+}
+
+int	set_block(const char *format, va_list va)
+{
+	t_struct	form;
+	int			i;
+
+	i = 0;
+	init_struct(&form);
+	while ((check_options(format[i], &form)) == 1)
+		i++;
+	while ((check_minimal_large(format[i], &form)) == 1)
+		i++;
+	if (format[i] == '.')
+	{
+		while ((check_precision(format[++i], &form)) == 1)
+			continue;
+	}
+	while (format[i] == 'h' || format[i] == 'l' || format[i] == 'j'
+			|| format[i] == 'z')
+	{
+		check_size_modifier(format + i, &form);
+		i++;
+		if ((&form)->hh > 0 || (&form)->ll > 0)
+			i++;
+	}
+	if ((check_type(format[i])) == 1)
+		(&form)->type = format[i];
+	return (display_block(&form, va));
 }
