@@ -27,10 +27,12 @@ int	set_format(const char *format, va_list va)
 		if (format[i] == '%' && format[i + 1] == '%')
 		{
 			ft_putchar(format[i]);
-			i += 2;
+			i++;
 		}
-		else if (format[i] == '%' && format[i + 1] != '%')
-			return (set_block(format + i + 1, va));
+		if (format[i] == '%' && format[i + 1] != '%')
+		{
+			i += (set_block(format + i + 1, va)) + 1;
+		}
 		i++;
 	}
 	return (-1);
@@ -62,5 +64,5 @@ int	set_block(const char *format, va_list va)
 	}
 	if ((check_type(format[i])) == 1)
 		(&form)->type = format[i];
-	return (display_block(&form, va));
+	return (display_block(&form, va, i));
 }

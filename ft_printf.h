@@ -45,7 +45,7 @@ int				check_precision(const char format, t_struct *form);
 int				check_block(char *block, t_struct *form);
 int				set_format(const char *format, va_list va);
 int				set_block(const char *format, va_list va);
-int				display_block(t_struct *form, va_list va);
+int				display_block(t_struct *form, va_list va, int i);
 
 void			check_size_modifier(const char *format, t_struct *form);
 void			init_struct(t_struct *form);

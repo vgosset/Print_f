@@ -44,7 +44,7 @@ int		ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%' && format[i + 1] == '%')
 			i += 2;
-		else if (format[i] == '%' && format[i + 1] != '%')
+		if (format[i] == '%' && format[i + 1] != '%')
 		{
 			if ((check_format(format + i + 1)) == -1)
 				return (-1);
@@ -58,9 +58,12 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	char string;
+	char	c;
+	char *string;
 
-	string = 'P';
-	ft_printf("aaa %c%c", string, string);
+	string = "John";
+	c = 'X';
+	printf("Salut %s, t'es vraiment trop : %%%%%%%%%c\n", string, c);
+	ft_printf("Salut %s, t'es vraiment trop : %%%%%%%%%c\n", string, c);
 	return (0);
 }

@@ -12,9 +12,11 @@
 
 #include "ft_printf.h"
 
-int	display_block(t_struct *form, va_list va)
+int	display_block(t_struct *form, va_list va, int i)
 {
 	if (form->type == 'c')
 		ft_putchar(va_arg(va, int));
-	return (1);
+	if (form->type == 's')
+		ft_putstr(va_arg(va, char *));
+	return (i);
 }
