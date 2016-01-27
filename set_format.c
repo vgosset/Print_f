@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:01:00 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/26 20:09:51 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/01/27 19:00:27 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,9 @@ int	set_format(const char *format, va_list va)
 			i++;
 		}
 		if (format[i] == '%' && format[i + 1] != '%')
-		{
-			i += (set_block(format + i + 1, va)) + 1;
-		}
-		i++;
+			i += (set_block(format + i + 1, va)) + 2;
 	}
-	return (-1);
+	return (1);
 }
 
 int	set_block(const char *format, va_list va)

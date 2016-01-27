@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/26 20:09:45 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/01/27 19:05:59 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,15 @@ int		ft_printf(const char *format, ...)
 	return (len);
 }
 
+#include <stdio.h>
+
 int		main(void)
 {
-	char	c;
-	char *string;
+	char	*c;
+	int		a;
 
-	string = "John";
-	c = 'X';
-	printf("Salut %s, t'es vraiment trop : %%%%%%%%%c\n", string, c);
-	ft_printf("Salut %s, t'es vraiment trop : %%%%%%%%%c\n", string, c);
+	c = "Bbbbbb6";
+	a = 6;
+	ft_printf("%0lls=%#0hhd\n", c, a);
 	return (0);
 }
