@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:01:00 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/27 19:00:27 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/01/29 12:21:57 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,16 @@ int	set_format(const char *format, va_list va)
 	i = 0;
 	while (format[i])
 	{
-		while (format[i] && format[i] != '%')
+		if (format[i] != '%')
+			ft_putchar(format[i]);
+		else if (format[i] == '%' && format[i + 1] == '%')
 		{
 			ft_putchar(format[i]);
 			i++;
 		}
-		if (format[i] == '%' && format[i + 1] == '%')
-		{
-			ft_putchar(format[i]);
-			i++;
-		}
-		if (format[i] == '%' && format[i + 1] != '%')
-			i += (set_block(format + i + 1, va)) + 2;
+		else if (format[i] == '%' && format[i + 1] != '%')
+			i += (set_block(format + i + 1, va)) + 1;
+		i++;
 	}
 	return (1);
 }

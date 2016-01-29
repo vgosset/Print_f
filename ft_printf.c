@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/27 19:05:59 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/01/29 13:06:05 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int		ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1] == '%')
-			i += 2;
-		if (format[i] == '%' && format[i + 1] != '%')
+			i++;
+		else if (format[i] == '%' && format[i + 1] != '%')
 		{
 			if ((check_format(format + i + 1)) == -1)
 				return (-1);
@@ -60,11 +60,12 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	char	*c;
+	char	c;
 	int		a;
 
-	c = "Bbbbbb6";
+	c = 'B';
 	a = 6;
-	ft_printf("%0lls=%#0hhd\n", c, a);
+	printf("%c\n", c);
+	ft_printf("%c\n", c);
 	return (0);
 }
