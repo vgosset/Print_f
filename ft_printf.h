@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/09 13:24:59 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/09 18:09:12 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void			check_display_block_d(t_struct *form, va_list va);
 void			check_size_modifier(const char *format, t_struct *form);
 void			init_struct(t_struct *form);
 
-char			*ui_to_bin(unsigned int u);
+char			*ui_to_bits(unsigned int u);
+char			**uni_mask(char *bits);
 
 #endif
