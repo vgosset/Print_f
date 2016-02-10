@@ -56,5 +56,6 @@ void			init_struct(t_struct *form);
 
 char			*ui_to_bits(unsigned int u);
 char			**uni_mask(char *bits);
+char			**uni_mask_1(char *bits, char *mask, size_t b_len, int m_len);
 
 #endif

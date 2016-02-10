@@ -59,6 +59,13 @@ char	**uni_mask(char *bits)
 		mask = ft_strdup("11110xxx 10xxxxxx 10xxxxxx 10xxxxxx");
 	mask_len = ft_strlen(mask) - 1;
 	bits_len = 31;
+	return (uni_mask_1(bits, mask, bits_len, mask_len));
+}
+
+char	**uni_mask_1(char *bits, char *mask, size_t bits_len, int mask_len)
+{
+	char	**tmp;
+
 	while (mask_len >= 0)
 	{
 		if (mask[mask_len] == 'x' && bits[bits_len])
@@ -70,4 +77,6 @@ char	**uni_mask(char *bits)
 			mask[mask_len] = '0';
 		mask_len--;
 	}
+	tmp = ft_strsplit(mask, ' ');
+	return (tmp);
 }
