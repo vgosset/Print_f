@@ -6,10 +6,10 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/29 13:06:05 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/11 16:25:59 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <wchar.h>
 #include "ft_printf.h"
 
 void	init_struct(t_struct *form)
@@ -60,12 +60,12 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	char	c;
+	wchar_t	c;
 	int		a;
 
-	c = 'B';
+	c = 64;
 	a = 6;
-	printf("%c\n", c);
-	ft_printf("%c\n", c);
+	printf("True : %C\n", c);
+	ft_printf("My : %C\n", c);
 	return (0);
 }

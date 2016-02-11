@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/09 18:09:12 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/11 15:58:14 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../Libft/includes/libft.h"
 # include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct	s_struct
 {
@@ -47,15 +49,20 @@ int				set_block(const char *format, va_list va);
 int				display_block(t_struct *form, va_list va, int i);
 int				display_block_2(t_struct *form, va_list va, int i);
 
+long			ft_power(long nb, int i);
+
+void			ft_putint(int c);
 void			ft_putwchar(wchar_t c);
 void			check_display_block_s(t_struct *form, va_list va);
 void			check_display_block_c(t_struct *form, va_list va);
 void			check_display_block_d(t_struct *form, va_list va);
 void			check_size_modifier(const char *format, t_struct *form);
 void			init_struct(t_struct *form);
+void			print_oct(char *mask);
 
 char			*ui_to_bits(unsigned int u);
 char			**uni_mask(char *bits);
 char			**uni_mask_1(char *bits, char *mask, size_t b_len, int m_len);
+
 
 #endif

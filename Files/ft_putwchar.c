@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 12:30:53 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/09 18:09:04 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/11 15:54:56 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,18 @@ void	ft_putwchar(wchar_t c)
 {
 	char	*bits;
 	char	**mask;
+	int		i;
 
 	bits = ui_to_bits((unsigned int)c);
 	mask = uni_mask(bits);
-
+	i = 0;
+	while (mask[i])
+	{
+		print_oct(mask[i]);
+		i++;
+	}
+	free(bits);
+	free(mask);
 }
 
 char	*ui_to_bits(unsigned int u)
@@ -27,7 +35,8 @@ char	*ui_to_bits(unsigned int u)
 	char			*bits;
 	unsigned int	i;
 
-	if (!(bits == (char *)malloc(sizeof(char) * 33)))
+	bits = (char *)malloc(sizeof(char) * 33);
+	if (!bits)
 		return (NULL);
 	ft_bzero(bits, 33);
 	i = 31;
@@ -51,6 +60,11 @@ char	**uni_mask(char *bits)
 	while (bits[bits_len])
 		bits_len--;
 	bits_len = 31 - bits_len;
+	if (bits_len <= 7)
+	{
+		print_oct(bits);
+		return (NULL);
+	}
 	if (bits_len > 7 && bits_len <= 11)
 		mask = ft_strdup("110xxxxx 10xxxxxx");
 	else if (bits_len > 11 && bits_len <= 16)
@@ -79,4 +93,27 @@ char	**uni_mask_1(char *bits, char *mask, size_t bits_len, int mask_len)
 	}
 	tmp = ft_strsplit(mask, ' ');
 	return (tmp);
+}
+
+void	print_oct(char *mask)
+{
+	int	power;
+	int	value;
+	int	i;
+
+	i = 0;
+	value = 0;
+	power = 7;
+	while (i < 8)
+	{
+		if (mask[i] == '0')
+			power--;
+		else
+		{
+			value += ft_power(2, power);
+			power--;
+		}
+		i++;
+	}
+	ft_putint(value);
 }
