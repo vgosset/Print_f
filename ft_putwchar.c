@@ -24,6 +24,7 @@ void	ft_putwchar(wchar_t c)
 	while (mask && mask[i])
 	{
 		print_oct(mask[i]);
+		free(mask[i]);
 		i++;
 	}
 	free(bits);
