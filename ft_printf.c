@@ -6,12 +6,12 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/11 17:51:23 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/11 19:19:17 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <locale.h>
 #include <wchar.h>
 #include "ft_printf.h"
-
 void	init_struct(t_struct *form)
 {
 	form->block = NULL;
@@ -60,12 +60,13 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
+	setlocale(LC_ALL, "en_US.UTF-8");
 	wchar_t	c;
 	int		a;
 
-	c = 64;
+	c = 33;
 	a = 6;
-	printf("True : %C\n", c);
-	ft_printf("My : %C\n", c);
+	printf("True : %ls\n", L"我是abc\naaᏪ猫");
+	ft_printf("My : %ls\n", L"我是abc\naaᏪ猫");
 	return (0);
 }
