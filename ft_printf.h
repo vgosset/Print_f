@@ -53,6 +53,7 @@ long			ft_power(long nb, int i);
 
 void			ft_putint(int c);
 void			ft_putwchar(wchar_t c);
+void			ft_putwstr(wchar_t *str);
 void			check_display_block_s(t_struct *form, va_list va);
 void			check_display_block_c(t_struct *form, va_list va);
 void			check_display_block_d(t_struct *form, va_list va);

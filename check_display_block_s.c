@@ -14,17 +14,8 @@
 
 void	check_display_block_s(t_struct *form, va_list va)
 {
-	wchar_t	*str;
-
 	if (form->l <= 0 && form->type == 's')
 		ft_putstr(va_arg(va, char *));
 	else if (form->l > 0 || form->type == 'S')
-	{
-		str = va_arg(va, wchar_t*);
-		while (*str)
-		{
-			ft_putwchar(*str);
-			str++;
-		}
-	}
+		ft_putwstr(va_arg(va, wchar_t*));
 }

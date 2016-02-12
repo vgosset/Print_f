@@ -60,13 +60,13 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	setlocale(LC_ALL, "en_US.UTF-8");
-	wchar_t	c;
+	setlocale(LC_ALL, "fr_FR.UTF-8");
+	wchar_t	*c;
 	int		a;
 
-	c = 33;
+	c = L"我";
 	a = 6;
-	printf("True : %ls\n", L"我是abc\naaᏪ猫");
-	ft_printf("My : %ls\n", L"我是abc\naaᏪ猫");
+	printf("True : %ls\n", L"我是abc\n");
+	ft_printf("My : %S\n", L"我是abc\n");
 	return (0);
 }
