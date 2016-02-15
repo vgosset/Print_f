@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/15 13:01:18 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/15 18:34:15 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ long			ft_power(long nb, int i);
 
 void			ft_putint(int c);
 void			ft_putnbr(int n);
+void			ft_puthex(unsigned long nbr);
+void			ft_puthex_X(unsigned long nbr);
 void			ft_putchar(char c);
 void			ft_putwchar(wchar_t c);
 void			ft_putstr(char const *s);
@@ -69,6 +71,8 @@ void			print_oct(char *mask);
 void			ft_bzero(void *s, size_t n);
 
 char			*ft_itoa(int n);
+char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strnew(size_t size);
 char			*ui_to_bits(unsigned int u);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strdup(const char *s1);

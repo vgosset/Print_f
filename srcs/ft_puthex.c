@@ -6,10 +6,18 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 12:55:06 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/15 13:00:17 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/15 17:52:56 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
+void	ft_puthex(unsigned long nbr)
+{
+	if (nbr >= 16)
+		ft_puthex(nbr / 16);
+	if ((nbr % 16) >= 10 && (nbr % 16) <= 15)
+		ft_putchar((nbr % 16) - 10 + 'a');
+	else if ((nbr % 16) < 10)
+		ft_putchar((nbr % 16) + '0');
+}

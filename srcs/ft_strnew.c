@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 12:53:41 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/15 18:34:18 by jle-quer         ###   ########.fr       */
+/*   Created: 2015/12/03 11:45:51 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/15 16:09:42 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n)
+char	*ft_strnew(size_t size)
 {
-	if (n == -2147483648)
-	{
-		ft_putstr("-2147483648");
-		return ;
-	}
+	char	*new;
+	size_t	i;
+
+	i = 0;
+	new = (char *)malloc(sizeof(char) * size + 1);
+	if (new == NULL)
+		return (NULL);
 	else
 	{
-		if (n < 0)
+		while (i < size)
 		{
-			n = -n;
-			ft_putchar('-');
+			new[i] = '\0';
+			i++;
 		}
-		if (n >= 10)
-			ft_putnbr(n / 10);
-		ft_putchar(n % 10 + '0');
+		new[i] = '\0';
 	}
+	return (new);
 }

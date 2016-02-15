@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 12:53:41 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/15 18:34:18 by jle-quer         ###   ########.fr       */
+/*   Created: 2015/12/03 13:28:28 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/15 16:08:56 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (n == -2147483648)
+	char	*new;
+	int		i;
+	int		j;
+
+	if (!s1)
+		return (ft_strdup(s2));
+	else if (!s2)
+		return (ft_strdup(s1));
+	if (!(new = ft_strnew((size_t)ft_strlen(s1) + (size_t)ft_strlen(s2) + 1)))
+		return (NULL);
+	i = -1;
+	j = 0;
+	while (s1[++i])
+		new[i] = ((char *)s1)[i];
+	while (s2[j])
 	{
-		ft_putstr("-2147483648");
-		return ;
+		new[i] = ((char *)s2)[j];
+		i++;
+		j++;
 	}
-	else
-	{
-		if (n < 0)
-		{
-			n = -n;
-			ft_putchar('-');
-		}
-		if (n >= 10)
-			ft_putnbr(n / 10);
-		ft_putchar(n % 10 + '0');
-	}
+	new[i] = '\0';
+	return (new);
 }
