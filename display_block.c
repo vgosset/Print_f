@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:51:57 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/27 19:05:53 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/15 13:01:34 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	display_block_2(t_struct *form, va_list va, int i)
 	else if (form->type == 'U')
 		;
 	else if (form->type == 'x')
-		;
+		check_display_block_x(form, va);
 	else if (form->type == 'X')
 		;
 	else if (form->type == 'c')

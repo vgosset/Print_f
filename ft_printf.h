@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/15 12:42:26 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/15 13:01:18 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void			ft_putwstr(wchar_t *str);
 void			check_display_block_s(t_struct *form, va_list va);
 void			check_display_block_c(t_struct *form, va_list va);
 void			check_display_block_d(t_struct *form, va_list va);
+void			check_display_block_x(t_struct *form, va_list va);
 void			check_size_modifier(const char *format, t_struct *form);
 void			init_struct(t_struct *form);
 void			print_oct(char *mask);
