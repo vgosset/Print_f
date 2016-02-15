@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/11 19:19:17 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/15 12:47:56 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <locale.h>
@@ -66,7 +66,7 @@ int		main(void)
 
 	c = L"我";
 	a = 6;
-	printf("True : %ls\n", L"我是abc\n");
-	ft_printf("My : %S\n", L"我是abc\n");
+	printf("True : %x\n", 12);
+	ft_printf("My : %i\n", 12);
 	return (0);
 }

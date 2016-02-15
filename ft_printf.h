@@ -6,14 +6,13 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/11 19:23:55 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/15 12:42:26 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINT_F_H
 # define FT_PRINT_F_H
 
-# include "../Libft/includes/libft.h"
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -48,11 +47,17 @@ int				set_format(const char *format, va_list va);
 int				set_block(const char *format, va_list va);
 int				display_block(t_struct *form, va_list va, int i);
 int				display_block_2(t_struct *form, va_list va, int i);
+int				ft_isspace(int c);
+int				ft_count(int n);
+int				ft_atoi(const char *str);
 
 long			ft_power(long nb, int i);
 
 void			ft_putint(int c);
+void			ft_putnbr(int n);
+void			ft_putchar(char c);
 void			ft_putwchar(wchar_t c);
+void			ft_putstr(char const *s);
 void			ft_putwstr(wchar_t *str);
 void			check_display_block_s(t_struct *form, va_list va);
 void			check_display_block_c(t_struct *form, va_list va);
@@ -60,10 +65,18 @@ void			check_display_block_d(t_struct *form, va_list va);
 void			check_size_modifier(const char *format, t_struct *form);
 void			init_struct(t_struct *form);
 void			print_oct(char *mask);
+void			ft_bzero(void *s, size_t n);
 
+char			*ft_itoa(int n);
 char			*ui_to_bits(unsigned int u);
+char			*ft_strsub(char const *s, unsigned int start, size_t len);
+char			*ft_strdup(const char *s1);
+
 char			**uni_mask(char *bits);
 char			**uni_mask_1(char *bits, char *mask, size_t b_len, int m_len);
+char			**ft_strsplit(char const *s, char c);
 
+size_t			ft_words(char const *str, char c);
+size_t			ft_strlen(const char *s);
 
 #endif

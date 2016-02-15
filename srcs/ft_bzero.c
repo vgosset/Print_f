@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 12:53:41 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/27 15:45:11 by jle-quer         ###   ########.fr       */
+/*   Created: 2015/11/25 11:59:34 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/15 12:31:15 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr(int n)
+void	ft_bzero(void *s, size_t n)
 {
-	if (n == -2147483648)
+	size_t cpt;
+
+	cpt = 0;
+	if (n > 0)
 	{
-		ft_putstr("-2147483648");
-		return ;
-	}
-	else
-	{
-		if (n < 0)
+		while (cpt < n)
 		{
-			n = -n;
-			ft_putchar('-');
+			((char *)s)[cpt] = '\0';
+			cpt++;
 		}
-		if (n >= 10)
-			ft_putnbr(n / 10);
-		ft_putchar(n % 10 + '0');
 	}
+	((char *)s)[cpt] = '\0';
 }

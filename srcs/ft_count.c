@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_count.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 12:23:22 by jle-quer          #+#    #+#             */
-/*   Updated: 2015/11/30 11:31:29 by jle-quer         ###   ########.fr       */
+/*   Created: 2015/12/14 15:25:45 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/15 12:27:50 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_count(int n)
 {
-	size_t length;
+	int i;
 
-	length = 0;
-	while (s[length])
-		length++;
-	return (length);
+	i = 0;
+	if (n < 0)
+	{
+		i++;
+		n = -n;
+	}
+	while (n >= 10)
+	{
+		n = n / 10;
+		i++;
+	}
+	i++;
+	return (i);
 }

@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_words.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 12:51:24 by jle-quer          #+#    #+#             */
-/*   Updated: 2015/11/30 11:27:47 by jle-quer         ###   ########.fr       */
+/*   Created: 2015/12/11 15:57:31 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/15 12:32:39 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
-void	ft_putchar(char c)
+size_t	ft_words(char const *str, char c)
 {
-	write(1, &c, 1);
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		while (str[i] == c)
+			i++;
+		while (str[i] != c && str[i])
+		{
+			if (str[i + 1] == c || str[i + 1] == '\0')
+				j++;
+			i++;
+		}
+	}
+	return (j);
 }

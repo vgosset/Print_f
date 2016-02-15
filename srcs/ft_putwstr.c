@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_putwstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 12:24:02 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/11 15:48:05 by jle-quer         ###   ########.fr       */
+/*   Created: 2016/02/15 12:31:33 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/15 12:31:40 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*ft_itoa(int n)
+void	ft_putwstr(wchar_t *str)
 {
-	char	*str;
+	char	*bits;
+	char	**mask;
 	int		i;
 
-	i = ft_count(n);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	else if (n == 0)
-		return (ft_strdup("0"));
-	str = (char *)malloc(sizeof(char) * i + 1);
-	if (str == NULL)
-		return (NULL);
-	str[i--] = '\0';
-	if (n < 0)
+	while (*str)
 	{
-		n = -n;
-		str[0] = '-';
+		bits = ui_to_bits((unsigned int)*str);
+		mask = uni_mask(bits);
+		i = 0;
+		while (mask && mask[i])
+		{
+			print_oct(mask[i]);
+			free(mask[i]);
+			i++;
+		}
+		free(bits);
+		free(mask);
+		str++;
 	}
-	while (n > 0)
-	{
-		str[i--] = (n % 10 + '0');
-		n = n / 10;
-	}
-	return (str);
 }
