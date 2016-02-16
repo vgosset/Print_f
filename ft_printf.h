@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/15 18:34:15 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/16 13:20:24 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ typedef struct	s_struct
 {
 	char		*block;
 	int			hash;
-	int			minus;
-	int			positive;
+	int			moins;
+	int			plus;
 	int			zero;
 	int			space;
-	int			minimal_large;
+	int			large;
 	int			prec;
 	int			hh;
 	int			h;
@@ -65,6 +65,7 @@ void			check_display_block_s(t_struct *form, va_list va);
 void			check_display_block_c(t_struct *form, va_list va);
 void			check_display_block_d(t_struct *form, va_list va);
 void			check_display_block_x(t_struct *form, va_list va);
+void			check_display_block_o(t_struct *form, va_list va);
 void			check_size_modifier(const char *format, t_struct *form);
 void			init_struct(t_struct *form);
 void			print_oct(char *mask);

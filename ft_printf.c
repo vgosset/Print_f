@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/15 18:34:11 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/16 13:20:29 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <locale.h>
@@ -16,11 +16,11 @@ void	init_struct(t_struct *form)
 {
 	form->block = NULL;
 	form->hash = 0;
-	form->minus = 0;
-	form->positive = 0;
+	form->moins = 0;
+	form->plus = 0;
 	form->zero = 0;
 	form->space = 0;
-	form->minimal_large = 0;
+	form->large = 0;
 	form->prec = 0;
 	form->hh = 0;
 	form->h = 0;
@@ -62,11 +62,11 @@ int		main(void)
 {
 	setlocale(LC_ALL, "fr_FR.UTF-8");
 	wchar_t	*c;
-	unsigned short	a;
+	int	a;
 
 	c = L"我";
-	a = 52500;
-	printf("True : %#hx\n", a);
-	ft_printf("My : %#hx\n", a);
+	a = 369;
+	printf("True : %o\n", a);
+	ft_printf("My : %ls\n", c);
 	return (0);
 }

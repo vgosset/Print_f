@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 17:46:46 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/27 19:05:56 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/16 13:13:24 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	check_block(char *block, t_struct *form)
 		return (-1);
 	if ((form->hh + form->h + form->l + form->ll + form->j + form->z) > 1)
 		return (-1);
-	if ((form->minus > 0 && form->zero > 0)
-			|| (form->positive > 0 && form->space > 0))
+	if ((form->moins > 0 && form->zero > 0)
+			|| (form->plus > 0 && form->space > 0))
 		return (-1);
 	return (1);
 }

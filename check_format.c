@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 15:50:13 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/01/29 12:22:04 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/16 13:13:00 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int		check_options(const char format, t_struct *form)
 			&& format != ' ')
 		return (0);
 	else if (format == '-')
-		form->minus += 1;
+		form->moins += 1;
 	else if (format == '+')
-		form->positive += 1;
+		form->plus += 1;
 	else if (format == '#')
 		form->hash += 1;
 	else if (format == '0')
@@ -63,7 +63,7 @@ int		check_minimal_large(const char format, t_struct *form)
 {
 	if ((format - 48) >= 0 && (format - 48) <= 9)
 	{
-		form->minimal_large = form->minimal_large * 10 + (format - 48);
+		form->large = form->large * 10 + (format - 48);
 		return (1);
 	}
 	else
