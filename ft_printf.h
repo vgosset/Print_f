@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/16 13:20:24 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/16 17:29:36 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void			ft_putint(int c);
 void			ft_putnbr(int n);
 void			ft_puthex(unsigned long nbr);
 void			ft_puthex_X(unsigned long nbr);
+void			ft_putoctal(unsigned long nbr);
 void			ft_putchar(char c);
 void			ft_putwchar(wchar_t c);
 void			ft_putstr(char const *s);
