@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/16 17:29:36 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/18 12:09:11 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct	s_struct
 	int			plus;
 	int			zero;
 	int			space;
-	int			large;
+	int			larg;
 	int			prec;
 	int			hh;
 	int			h;
