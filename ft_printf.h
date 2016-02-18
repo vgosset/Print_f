@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/18 12:09:11 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/18 17:53:17 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int				check_block(char *block, t_struct *form);
 int				set_format(const char *format, va_list va);
 int				set_block(const char *format, va_list va);
 int				display_block(t_struct *form, va_list va, int i);
-int				display_block_2(t_struct *form, va_list va, int i);
 int				ft_isspace(int c);
 int				ft_count(int n);
 int				ft_atoi(const char *str);
@@ -55,8 +54,12 @@ long			ft_power(long nb, int i);
 
 void			ft_putint(int c);
 void			ft_putnbr(int n);
+void			ft_putunsigned_nbr(unsigned long n);
+void			ft_putlong_nbr(long nbr);
+void			ft_putsignedchar_nbr(signed char nbr);
+void			ft_putshort_nbr(short n);
 void			ft_puthex(unsigned long nbr);
-void			ft_puthex_X(unsigned long nbr);
+void			ft_puthex_x(unsigned long nbr);
 void			ft_putoctal(unsigned long nbr);
 void			ft_putchar(char c);
 void			ft_putwchar(wchar_t c);
@@ -65,8 +68,10 @@ void			ft_putwstr(wchar_t *str);
 void			check_display_block_s(t_struct *form, va_list va);
 void			check_display_block_c(t_struct *form, va_list va);
 void			check_display_block_d(t_struct *form, va_list va);
+void			check_display_block_d_2(t_struct *form, va_list va);
 void			check_display_block_x(t_struct *form, va_list va);
 void			check_display_block_o(t_struct *form, va_list va);
+void			check_display_block_u(t_struct *form, va_list va);
 void			check_size_modifier(const char *format, t_struct *form);
 void			init_struct(t_struct *form);
 void			print_oct(char *mask);

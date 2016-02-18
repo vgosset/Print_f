@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 15:50:13 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/16 13:13:00 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/18 12:48:44 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		check_minimal_large(const char format, t_struct *form)
 {
 	if ((format - 48) >= 0 && (format - 48) <= 9)
 	{
-		form->large = form->large * 10 + (format - 48);
+		form->larg = form->larg * 10 + (format - 48);
 		return (1);
 	}
 	else

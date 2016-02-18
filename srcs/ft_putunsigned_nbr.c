@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex_X.c                                      :+:      :+:    :+:   */
+/*   ft_putunsigned_nbr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/15 17:22:03 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/15 17:37:53 by jle-quer         ###   ########.fr       */
+/*   Created: 2016/02/18 15:12:12 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/18 15:14:29 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puthex_X(unsigned long nbr)
+void	ft_putunsigned_nbr(unsigned long n)
 {
-	if (nbr >= 16)
-		ft_puthex_X(nbr / 16);
-	if ((nbr % 16) >= 10 && (nbr % 16) <= 15)
-		ft_putchar((nbr % 16) - 10 + 'A');
-	else if ((nbr % 16) < 10)
-		ft_putchar((nbr % 16) + '0');
+	if (n >= 10)
+		ft_putunsigned_nbr(n / 10);
+	ft_putchar(n % 10 + '0');
 }

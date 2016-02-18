@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putshort_nbr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 12:53:41 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/18 17:45:41 by jle-quer         ###   ########.fr       */
+/*   Created: 2016/02/18 17:37:15 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/18 17:45:19 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n)
+void	ft_putshort_nbr(short n)
 {
-	if (n == -2147483648)
+	if (n == -32768)
 	{
-		ft_putstr("-2147483648");
+		ft_putstr("-32768");
 		return ;
 	}
 	else
@@ -27,7 +27,7 @@ void	ft_putnbr(int n)
 			ft_putchar('-');
 		}
 		if (n >= 10)
-			ft_putnbr(n / 10);
+			ft_putshort_nbr(n / 10);
 		ft_putchar(n % 10 + '0');
 	}
 }

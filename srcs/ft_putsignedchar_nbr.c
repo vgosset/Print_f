@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putsignedchar_nbr.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 12:53:41 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/18 17:45:41 by jle-quer         ###   ########.fr       */
+/*   Created: 2016/02/18 17:32:37 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/18 17:35:49 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n)
+void	ft_putsignedchar_nbr(signed char nbr)
 {
-	if (n == -2147483648)
+	if (nbr == -128)
 	{
-		ft_putstr("-2147483648");
+		ft_putstr("-128");
 		return ;
 	}
 	else
 	{
-		if (n < 0)
+		if (nbr < 0)
 		{
-			n = -n;
+			nbr = -nbr;
 			ft_putchar('-');
 		}
-		if (n >= 10)
-			ft_putnbr(n / 10);
-		ft_putchar(n % 10 + '0');
+		if (nbr >= 10)
+			ft_putsignedchar_nbr(nbr / 10);
+		ft_putchar(nbr % 10 + '0');
 	}
 }
