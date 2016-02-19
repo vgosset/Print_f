@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/18 17:53:17 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/19 16:07:17 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct	s_struct
 	char		type;
 }				t_struct;
 
+int				g_ret;
+
 int				ft_printf(const char *format, ...);
 int				check_format(const char *format);
 int				check_options(const char format, t_struct *form);
@@ -43,11 +45,11 @@ int				check_type(const char format);
 int				check_minimal_large(const char format, t_struct *form);
 int				check_precision(const char format, t_struct *form);
 int				check_block(char *block, t_struct *form);
-int				set_format(const char *format, va_list va);
 int				set_block(const char *format, va_list va);
 int				display_block(t_struct *form, va_list va, int i);
 int				ft_isspace(int c);
-int				ft_count(int n);
+int				ft_count(long n);
+int				ft_count_wchar(unsigned int wchar);
 int				ft_atoi(const char *str);
 
 long			ft_power(long nb, int i);
@@ -65,6 +67,7 @@ void			ft_putchar(char c);
 void			ft_putwchar(wchar_t c);
 void			ft_putstr(char const *s);
 void			ft_putwstr(wchar_t *str);
+void			set_format(const char *format, va_list va);
 void			check_display_block_s(t_struct *form, va_list va);
 void			check_display_block_c(t_struct *form, va_list va);
 void			check_display_block_d(t_struct *form, va_list va);

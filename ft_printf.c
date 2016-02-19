@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/18 17:53:24 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/19 16:06:59 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <locale.h>
@@ -35,11 +35,10 @@ int		ft_printf(const char *format, ...)
 {
 	va_list		va;
 	int			i;
-	int			len;
 
+	g_ret = 0;
 	va_start(va, format);
 	i = 0;
-	len = 0;
 	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1] == '%')
@@ -51,9 +50,9 @@ int		ft_printf(const char *format, ...)
 		}
 		i++;
 	}
-	len = set_format(format, va);
+	set_format(format, va);
 	va_end(va);
-	return (len);
+	return (g_ret);
 }
 
 #include <stdio.h>
@@ -63,11 +62,13 @@ int		main(void)
 {
 	setlocale(LC_ALL, "fr_FR.UTF-8");
 	wchar_t	*c;
-	size_t	a;
+	wchar_t e;
+	long	a;
 
-	c = L"我abcé";
-	a = 145;
-	printf("True : %S\n", c);
-	ft_printf("My : %S\n", c);
+	c = L"我éabcfeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaf";
+	e = L'我';
+	a = 123456789123456789;
+	printf("True : %lo -- %d\n", a, printf("%lo / ", a));
+	ft_printf("My : %lo -- %d\n", a, ft_printf("%lo / ", a));
 	return (0);
 }

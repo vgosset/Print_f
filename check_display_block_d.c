@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 16:50:58 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/18 17:49:56 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/19 16:07:02 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	check_display_block_d(t_struct *form, va_list va)
 		ft_putsignedchar_nbr(p);
 	}
 	else
-		check_display_block_d_2(form, va);
+		return (check_display_block_d_2(form, va));
+	g_ret += ft_count(p);
 }
 
 void	check_display_block_d_2(t_struct *form, va_list va)
@@ -54,4 +55,5 @@ void	check_display_block_d_2(t_struct *form, va_list va)
 		p = va_arg(va, int);
 		ft_putnbr(p);
 	}
+	g_ret += ft_count(p);
 }

@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 15:50:13 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/18 12:48:44 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/19 16:05:36 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ int		check_options(const char format, t_struct *form)
 			&& format != ' ')
 		return (0);
 	else if (format == '-')
-		form->moins += 1;
+		form->moins = 1;
 	else if (format == '+')
-		form->plus += 1;
+		form->plus = 1;
 	else if (format == '#')
-		form->hash += 1;
+		form->hash = 1;
 	else if (format == '0')
-		form->zero += 1;
+		form->zero = 1;
 	else if (format == ' ')
-		form->space += 1;
+		form->space = 1;
 	return (1);
 }
 
@@ -84,15 +84,15 @@ int		check_precision(const char format, t_struct *form)
 void	check_size_modifier(const char *format, t_struct *form)
 {
 	if (format[0] == 'h' && format[1] != 'h')
-		form->h += 1;
+		form->h = 1;
 	else if (format[0] == 'h' && format[1] == 'h')
-		form->hh += 1;
+		form->hh = 1;
 	else if (format[0] == 'l' && format[1] != 'l')
-		form->l += 1;
+		form->l = 1;
 	else if (format[0] == 'l' && format[1] == 'l')
-		form->ll += 1;
+		form->ll = 1;
 	else if (format[0] == 'j')
-		form->j += 1;
+		form->j = 1;
 	else if (format[0] == 'z')
-		form->z += 1;
+		form->z = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:58:21 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/18 17:10:39 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/19 15:55:48 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void	check_display_block_o(t_struct *form, va_list va)
 		p = va_arg(va, size_t);
 	else
 		p = va_arg(va, unsigned int);
+	g_ret += ft_count((long)p);
 	ft_putoctal(p);
 }
