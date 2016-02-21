@@ -6,7 +6,7 @@ static	char	*unsigned_itoa_base(unsigned long nbr, int base)
 	int				size;
 
 	ret = NULL;
-	size = ft_count_base((unsigned long)nbr, base);
+	size = ft_count_base(nbr, base);
 	if ((ret = (char *)malloc(sizeof(char) * size + 1)))
 	{
 		ret[size--] = '\0';

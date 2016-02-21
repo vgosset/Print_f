@@ -68,7 +68,7 @@ int		main(void)
 	c = L"我éabcfeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaf";
 	e = L'我';
 	a = -123456789;
-	ft_putstr(ft_itoa_base(-123456789, 18));
+	ft_putstr(ft_itoa_base(0, 10));
 	printf(" / True : %ld -- %d\n", a, printf("\n%lx", a));
 	ft_printf(" / My : %ld -- %d\n", a, ft_printf("\n%lx", a));
 	return (0);
