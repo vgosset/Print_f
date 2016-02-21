@@ -63,12 +63,13 @@ int		main(void)
 	setlocale(LC_ALL, "fr_FR.UTF-8");
 	wchar_t	*c;
 	wchar_t e;
-	long	a;
+	unsigned long	a;
 
 	c = L"我éabcfeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaf";
 	e = L'我';
-	a = 123456789123456789;
-	printf("True : %lo -- %d\n", a, printf("%lo / ", a));
-	ft_printf("My : %lo -- %d\n", a, ft_printf("%lo / ", a));
+	a = -123456789;
+	ft_putstr(ft_itoa_base(-123456789, 18));
+	printf(" / True : %ld -- %d\n", a, printf("\n%lx", a));
+	ft_printf(" / My : %ld -- %d\n", a, ft_printf("\n%lx", a));
 	return (0);
 }

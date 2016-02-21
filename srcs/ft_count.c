@@ -30,3 +30,17 @@ int	ft_count(long n)
 	i++;
 	return (i);
 }
+
+int	ft_count_base(unsigned long n, int base)
+{
+	int i;
+
+	i = 0;
+	while (n >= base)
+	{
+		n = n / base;
+		i++;
+	}
+	i++;
+	return (i);
+}

@@ -28,6 +28,6 @@ void	check_display_block_o(t_struct *form, va_list va)
 		p = va_arg(va, size_t);
 	else
 		p = va_arg(va, unsigned int);
-	g_ret += ft_count((long)p);
+	g_ret += ft_count((long)p); // A modifier (count sur le nombre non convertis donc decalage)
 	ft_putoctal(p);
 }

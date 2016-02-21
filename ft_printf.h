@@ -49,6 +49,7 @@ int				set_block(const char *format, va_list va);
 int				display_block(t_struct *form, va_list va, int i);
 int				ft_isspace(int c);
 int				ft_count(long n);
+int				ft_count_base(unsigned long n, int base);
 int				ft_count_wchar(unsigned int wchar);
 int				ft_atoi(const char *str);
 
@@ -81,6 +82,7 @@ void			print_oct(char *mask);
 void			ft_bzero(void *s, size_t n);
 
 char			*ft_itoa(int n);
+char			*ft_itoa_base(long long nbr, int base);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strnew(size_t size);
 char			*ui_to_bits(unsigned int u);
