@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/19 16:06:59 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/22 13:17:33 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <locale.h>
@@ -68,8 +68,7 @@ int		main(void)
 	c = L"我éabcfeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaf";
 	e = L'我';
 	a = -123456789;
-	ft_putstr(ft_itoa_base(0, 10));
-	printf(" / True : %ld -- %d\n", a, printf("\n%lx", a));
-	ft_printf(" / My : %ld -- %d\n", a, ft_printf("\n%lx", a));
+	printf(" / True : %lc -- %d\n", e, printf("%lc", e));
+	ft_printf(" / My : %lc -- %d\n", e, ft_printf("%lc", e));
 	return (0);
 }

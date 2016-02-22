@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 15:25:45 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/19 16:02:06 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/22 12:16:02 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_count_base(unsigned long n, int base)
 	int i;
 
 	i = 0;
-	while (n >= base)
+	while (n >= (unsigned int)base)
 	{
 		n = n / base;
 		i++;

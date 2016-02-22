@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static	char	*unsigned_itoa_base(unsigned long nbr, int base)
+char	*unsigned_itoa_base(unsigned long nbr, int base)
 {
 	char			*ret;
 	int				size;

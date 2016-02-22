@@ -6,32 +6,30 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 12:52:30 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/18 17:48:19 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/22 13:01:44 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	check_display_block_x(t_struct *form, va_list va)
+char	*check_display_block_x(t_struct *form, va_list va)
 {
-	if (form->hash > 0 && form->type == 'x')
-		ft_putstr("0x");
-	else if (form->hash > 0 && form->type == 'X')
-		ft_putstr("0X");
-	if (form->type == 'x' && form->l < 1)
-		ft_puthex(va_arg(va, unsigned int));
-	else if (form->type == 'x' && form->l > 0)
-		ft_puthex(va_arg(va, unsigned long));
-	else if (form->type == 'X' && form->l < 1)
-		ft_puthex_x(va_arg(va, unsigned int));
-	else if (form->type == 'X' && form->l > 0)
-		ft_puthex_x(va_arg(va, unsigned long));
-	else if (form->type == 'x' && form->h < 1)
-		ft_puthex(va_arg(va, unsigned int));
-	else if (form->type == 'x' && form->h > 0)
-		ft_puthex((unsigned short)va_arg(va, unsigned int));
-	else if (form->type == 'X' && form->h < 1)
-		ft_puthex_x(va_arg(va, unsigned int));
-	else if (form->type == 'X' && form->h > 0)
-		ft_puthex_x((unsigned short)va_arg(va, unsigned int));
+	long long	p;
+	char		*ret;
+
+	if (form->l > 0 || form->ll > 0)
+		p = va_arg(va, unsigned long);
+	else if (form->j > 0)
+		p = va_arg(va, uintmax_t);
+	else if (form->hh > 0)
+		p = (unsigned char)va_arg(va, unsigned int);
+	else if (form ->h > 0)
+		p = (unsigned short)va_arg(va, unsigned int);
+	else if (form->z > 0)
+		p = va_arg(va, size_t);
+	else
+		p = va_arg(va, unsigned int);
+	ret = ft_itoa_base(p, 16);
+	g_ret += ft_strlen(ret);
+	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/19 16:07:17 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/22 13:17:42 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,6 @@ void			ft_putstr(char const *s);
 void			ft_putwstr(wchar_t *str);
 void			set_format(const char *format, va_list va);
 void			check_display_block_s(t_struct *form, va_list va);
-void			check_display_block_c(t_struct *form, va_list va);
-void			check_display_block_d(t_struct *form, va_list va);
-void			check_display_block_d_2(t_struct *form, va_list va);
-void			check_display_block_x(t_struct *form, va_list va);
-void			check_display_block_o(t_struct *form, va_list va);
-void			check_display_block_u(t_struct *form, va_list va);
 void			check_size_modifier(const char *format, t_struct *form);
 void			init_struct(t_struct *form);
 void			print_oct(char *mask);
@@ -83,11 +77,18 @@ void			ft_bzero(void *s, size_t n);
 
 char			*ft_itoa(int n);
 char			*ft_itoa_base(long long nbr, int base);
+char			*unsigned_itoa_base(unsigned long nbr, int base);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strnew(size_t size);
 char			*ui_to_bits(unsigned int u);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strdup(const char *s1);
+char			*check_display_block_d(t_struct *form, va_list va);
+char			*check_display_block_d_2(t_struct *form, va_list va);
+char			*check_display_block_u(t_struct *form, va_list va);
+char			*check_display_block_o(t_struct *form, va_list va);
+char			*check_display_block_x(t_struct *form, va_list va);
+char			*check_display_block_c(t_struct *form, va_list va);
 
 char			**uni_mask(char *bits);
 char			**uni_mask_1(char *bits, char *mask, size_t b_len, int m_len);

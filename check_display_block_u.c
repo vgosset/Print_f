@@ -6,15 +6,16 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 15:00:06 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/18 16:57:14 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/22 12:42:27 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	check_display_block_u(t_struct *form, va_list va)
+char	*check_display_block_u(t_struct *form, va_list va)
 {
-	unsigned long p;
+	unsigned long	p;
+	char			*ret;
 
 	if (form->l > 0 || form->ll > 0 || form->type == 'U')
 		p = va_arg(va, unsigned long);
@@ -28,5 +29,7 @@ void	check_display_block_u(t_struct *form, va_list va)
 		p = va_arg(va, size_t);
 	else
 		p = va_arg(va, unsigned int);
-	ft_putunsigned_nbr(p);
+	ret = unsigned_itoa_base(p, 10);
+	g_ret += ft_strlen(ret);
+	return (ret);
 }
