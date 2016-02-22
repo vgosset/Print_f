@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/22 13:17:42 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/22 18:03:36 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ char			*ft_strnew(size_t size);
 char			*ui_to_bits(unsigned int u);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strdup(const char *s1);
+char			*set_d(t_struct *form, char *ret);
 char			*check_display_block_d(t_struct *form, va_list va);
 char			*check_display_block_d_2(t_struct *form, va_list va);
 char			*check_display_block_u(t_struct *form, va_list va);
