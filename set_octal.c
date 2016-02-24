@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_d.c                                            :+:      :+:    :+:   */
+/*   set_octal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 16:14:49 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/24 16:46:59 by jle-quer         ###   ########.fr       */
+/*   Created: 2016/02/24 17:21:34 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/24 17:30:52 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*set_d_0(t_struct *strct, char *str, int nbr0, int n)
+static char	*set_d_0(t_struct *strct, char *str, int nbr0)
 {
 	char	*str0;
 	char	*new;
 	int		i;
-	int		j;
 
-	j = n < 0 ? 2 : 0;
-	str0 = ft_strnew(nbr0 + 2);
+	str0 = ft_strnew(nbr0 + 1);
 	i = 0;
-	if (str[0] == '-')
-	{
-		
-		str0[0] = '-';
-		i = 1;
-	}
-	while (i < nbr0 + j)
+	while (i < nbr0)
 	{
 		str0[i] = '0';
 		i++;
 	}
 	str0[i] = '\0';
-	if (n < 0)
-		str = ft_itoa(-n);
 	new = ft_strjoin(str0, str);
 	return (new);
 }
@@ -61,38 +51,28 @@ static char	*set_d_plus_space(t_struct *strct, char *str, char c)
 	return (str);
 }
 
-static char	*set_moins_d(t_struct *strct, char *str, char *larg)
-{
-	char *new;
-
-	if (strct->moins == 0)
-		new = ft_strjoin(larg, str);
-	else
-		new = ft_strjoin(str, larg);
-	return (new);
-}
-
-char	*set_d(t_struct *strct, va_list va)
+char	*set_octal(t_struct *strct, va_list va)
 {
 	char		*larg;
 	char		*str;
-	long long	n;
+	uintmax_t	n;
 
 	checkflags(strct, '-', '0');
 	checkflags(strct, '+', ' ');
-	n = check_display_block_d(strct, va);
-	if (strct->prec > ft_count(n))
-		str = set_d_0(strct, ft_itoa(n), strct->prec - ft_count(n), n);
+	n = check_display_block_o(strct, va);
+	if (strct->prec > ft_count_base(n, 8))
+		str = set_d_0(strct, ft_itoa_base(n, 8), strct->prec - ft_count_base(n, 8));
 	else
-		str = ft_itoa(n);
-	if (strct->plus == 1 && n > 0)
+		str = ft_itoa_base(n, 8);
+	if (strct->plus == 1)
 		str = set_d_plus_space(strct, str, '+');
-	if (strct->space == 1 && n > 0)
+	if (strct->space == 1)
 		str = set_d_plus_space(strct, str, ' ');
-	if (strct->larg > ft_strlen(str) && strct->larg > strct->prec)
+	if (strct->larg > ft_strlen(str))
 		larg = set_d_larg(strct, str);
-	if (strct->larg != 0  && strct->larg > strct->prec)
-		str = set_moins_d(strct, str, larg);
-	g_ret += ft_strlen(str);
+	if (strct->moins == 1)
+		str = ft_strjoin(str, larg);
+	else
+		str = ft_strjoin(larg, str);
 	return (str);
 }

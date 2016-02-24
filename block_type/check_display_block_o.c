@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_display_block_d.c                            :+:      :+:    :+:   */
+/*   check_display_block_o.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 16:50:58 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/22 17:31:50 by jle-quer         ###   ########.fr       */
+/*   Created: 2016/02/16 12:58:21 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/24 17:31:02 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*check_display_block_d(t_struct *form, va_list va)
+uintmax_t	check_display_block_o(t_struct *form, va_list va)
 {
-	long long	p;
+	uintmax_t	p;
 
-	if (form->l > 0 || form->ll > 0 || form->type == 'D')
-		p = va_arg(va, long long);
+	if (form->l > 0 || form->ll > 0 || form->type == 'O')
+		p = va_arg(va, unsigned long);
 	else if (form->j > 0)
-		p = va_arg(va, intmax_t);
+		p = va_arg(va, uintmax_t);
 	else if (form->hh > 0)
-		p = (signed char)va_arg(va, int);
-	else
-		return (check_display_block_d_2(form, va));
-	g_ret += ft_count(p);
-	return (ft_itoa_base(p, 10));
-}
-
-char	*check_display_block_d_2(t_struct *form, va_list va)
-{
-	long long	p;
-
-	if (form->h > 0)
-		p = (short)va_arg(va, int);
+		p = (unsigned char)va_arg(va, unsigned int);
+	else if (form->h > 0)
+		p = (unsigned short)va_arg(va, unsigned int);
 	else if (form->z > 0)
 		p = va_arg(va, size_t);
 	else
-		p = va_arg(va, int);
-	g_ret += ft_count(p);
-	return (ft_itoa_base(p, 10));
+		p = va_arg(va, unsigned int);
+	return (p);
 }

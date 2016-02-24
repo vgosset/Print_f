@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/22 18:03:36 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/24 17:31:08 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int				ft_count_wchar(unsigned int wchar);
 int				ft_atoi(const char *str);
 
 long			ft_power(long nb, int i);
+long long		check_display_block_d(t_struct *form, va_list va);
+uintmax_t		check_display_block_o(t_struct *form, va_list va);
 
 void			ft_putint(int c);
 void			ft_putnbr(int n);
@@ -74,6 +76,7 @@ void			check_size_modifier(const char *format, t_struct *form);
 void			init_struct(t_struct *form);
 void			print_oct(char *mask);
 void			ft_bzero(void *s, size_t n);
+void			checkflags(t_struct *form, char a, char b);
 
 char			*ft_itoa(int n);
 char			*ft_itoa_base(long long nbr, int base);
@@ -83,11 +86,10 @@ char			*ft_strnew(size_t size);
 char			*ui_to_bits(unsigned int u);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strdup(const char *s1);
-char			*set_d(t_struct *form, char *ret);
-char			*check_display_block_d(t_struct *form, va_list va);
-char			*check_display_block_d_2(t_struct *form, va_list va);
+char			*strplace(int n, char c);
+char			*set_d(t_struct *form, va_list va);
+char			*set_octal(t_struct *form, va_list va);
 char			*check_display_block_u(t_struct *form, va_list va);
-char			*check_display_block_o(t_struct *form, va_list va);
 char			*check_display_block_x(t_struct *form, va_list va);
 char			*check_display_block_c(t_struct *form, va_list va);
 

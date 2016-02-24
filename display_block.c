@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:51:57 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/22 18:03:34 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/24 17:30:59 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,9 @@ int	display_block(t_struct *form, va_list va, int i)
 	/*else if (form->type == 'p')
 		ret = ;*/
 	else if (form->type == 'd' || form->type == 'D' || form->type == 'i')
-	{
-		ret = check_display_block_d(form, va);
-		str = set_d(form, ret);
-	}
+		str = set_d(form, va);
 	else if (form->type == 'o' || form->type == 'O')
-		ret = check_display_block_o(form, va);
+		str = set_octal(form, va);
 	else if (form->type == 'u' || form->type == 'U')
 		ret = check_display_block_u(form, va);
 	else if (form->type == 'x' || form->type == 'X')
