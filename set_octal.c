@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 17:21:34 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/25 16:59:20 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/25 19:51:00 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ char	*set_octal(t_struct *strct, va_list va)
 		str = set_hash(strct, n);
 	else
 		str = ft_itoa_base(n, 8);
-	if (strct->space == 1)
-		str = set_d_plus_space(strct, str, ' ');
 	if (strct->larg > ft_strlen(str) && strct->larg > strct->prec)
 		larg = set_d_larg(strct, str);
 	if (strct->larg != 0 && strct->larg > strct->prec)

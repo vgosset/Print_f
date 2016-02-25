@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 16:58:18 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/25 18:08:46 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/25 19:50:55 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ char	*set_hex(t_struct *strct, va_list va)
 {
 	char		*larg;
 	char		*str;
+	char		*tmp;
 	uintmax_t	n;
 
 	checkflags(strct, '-', '0');
@@ -99,17 +100,15 @@ char	*set_hex(t_struct *strct, va_list va)
 		str = ft_itoa_base(n, 16);
 	if (strct->hash == 1)
 	{
-		larg = ft_strdup(str);
-		str = set_hash(strct, larg);
-		free(larg);
+		tmp = ft_strdup(str);
+		str = set_hash(strct, tmp);
 	}
 	if (strct->type == 'X')
 	{
-		larg = set_upper(str);
-		str = larg;
+		free(tmp);
+		tmp = set_upper(str);
+		str = tmp;
 	}
-	if (strct->space == 1)
-		str = set_d_plus_space(strct, str, ' ');
 	if (strct->larg > ft_strlen(str) && strct->larg > strct->prec)
 		larg = set_d_larg(strct, str);
 	if (strct->larg != 0 && strct->larg > strct->prec)
