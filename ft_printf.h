@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/24 17:31:08 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/25 17:23:18 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int				ft_atoi(const char *str);
 long			ft_power(long nb, int i);
 long long		check_display_block_d(t_struct *form, va_list va);
 uintmax_t		check_display_block_o(t_struct *form, va_list va);
+uintmax_t		check_display_block_x(t_struct *form, va_list va);
 
 void			ft_putint(int c);
 void			ft_putnbr(int n);
@@ -89,8 +90,8 @@ char			*ft_strdup(const char *s1);
 char			*strplace(int n, char c);
 char			*set_d(t_struct *form, va_list va);
 char			*set_octal(t_struct *form, va_list va);
+char			*set_hex(t_struct *form, va_list va);
 char			*check_display_block_u(t_struct *form, va_list va);
-char			*check_display_block_x(t_struct *form, va_list va);
 char			*check_display_block_c(t_struct *form, va_list va);
 
 char			**uni_mask(char *bits);

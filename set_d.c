@@ -6,13 +6,13 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 16:14:49 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/24 16:46:59 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/25 17:51:29 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*set_d_0(t_struct *strct, char *str, int nbr0, int n)
+static char	*set_d_0(t_struct *strct, char *str, int nbr0, long long n)
 {
 	char	*str0;
 	char	*new;
@@ -24,7 +24,6 @@ static char	*set_d_0(t_struct *strct, char *str, int nbr0, int n)
 	i = 0;
 	if (str[0] == '-')
 	{
-		
 		str0[0] = '-';
 		i = 1;
 	}

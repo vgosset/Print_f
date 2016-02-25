@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/24 17:30:56 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/25 18:06:57 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <locale.h>
@@ -63,12 +63,12 @@ int		main(void)
 	setlocale(LC_ALL, "fr_FR.UTF-8");
 	wchar_t	*c;
 	wchar_t e;
-	long long	a;
+	unsigned long	a;
 
 	c = L"我éabcfeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaf";
 	e = L'我';
-	a = 123456789;
-	printf(" / True : %d\n", printf("aaa%llo", a));
-	ft_printf(" / My   : %d\n", ft_printf("aaa%llo", a));
+	a = -123456789;
+	printf(" / True : %d\n", printf("%#3.1lX", a));
+	ft_printf(" / My   : %d\n", ft_printf("%#3.1lX", a));
 	return (0);
 }

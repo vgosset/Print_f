@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_octal.c                                        :+:      :+:    :+:   */
+/*   set_hex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 17:21:34 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/25 16:59:20 by jle-quer         ###   ########.fr       */
+/*   Created: 2016/02/25 16:58:18 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/25 18:08:46 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,29 @@ static char	*set_moins_d(t_struct *strct, char *str, char *larg)
 	return (new);
 }
 
-static char	*set_hash(t_struct *strct, uintmax_t n)
+static char	*set_hash(t_struct *strct, char *str)
 {
 	char	*new;
 
-	new = ft_strjoin("0", ft_itoa_base(n, 8));
+	new = ft_strjoin("0x", str);
 	return (new);
 }
 
-char	*set_octal(t_struct *strct, va_list va)
+static char	*set_upper(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] -= 32;
+		i++;
+	}
+	return (str);
+}
+
+char	*set_hex(t_struct *strct, va_list va)
 {
 	char		*larg;
 	char		*str;
@@ -78,13 +92,22 @@ char	*set_octal(t_struct *strct, va_list va)
 
 	checkflags(strct, '-', '0');
 	checkflags(strct, '+', ' ');
-	n = check_display_block_o(strct, va);
-	if (strct->prec > ft_count_base(n, 8))
-		str = set_d_0(strct, ft_itoa_base(n, 8), strct->prec - ft_count_base(n, 8));
-	else if (strct->hash == 1 && strct->prec < ft_count_base(n, 8))
-		str = set_hash(strct, n);
+	n = check_display_block_x(strct, va);
+	if (strct->prec > ft_count_base(n, 16))
+		str = set_d_0(strct, ft_itoa_base(n, 16), strct->prec - ft_count_base(n, 16));
 	else
-		str = ft_itoa_base(n, 8);
+		str = ft_itoa_base(n, 16);
+	if (strct->hash == 1)
+	{
+		larg = ft_strdup(str);
+		str = set_hash(strct, larg);
+		free(larg);
+	}
+	if (strct->type == 'X')
+	{
+		larg = set_upper(str);
+		str = larg;
+	}
 	if (strct->space == 1)
 		str = set_d_plus_space(strct, str, ' ');
 	if (strct->larg > ft_strlen(str) && strct->larg > strct->prec)

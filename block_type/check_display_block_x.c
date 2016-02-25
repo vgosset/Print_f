@@ -6,16 +6,15 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 12:52:30 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/22 13:01:44 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/25 17:01:30 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*check_display_block_x(t_struct *form, va_list va)
+uintmax_t	check_display_block_x(t_struct *form, va_list va)
 {
-	long long	p;
-	char		*ret;
+	uintmax_t	p;
 
 	if (form->l > 0 || form->ll > 0)
 		p = va_arg(va, unsigned long);
@@ -29,7 +28,5 @@ char	*check_display_block_x(t_struct *form, va_list va)
 		p = va_arg(va, size_t);
 	else
 		p = va_arg(va, unsigned int);
-	ret = ft_itoa_base(p, 16);
-	g_ret += ft_strlen(ret);
-	return (ret);
+	return (p);
 }
