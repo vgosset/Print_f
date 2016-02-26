@@ -49,6 +49,7 @@ int	set_block(const char *format, va_list va)
 		i++;
 	if (format[i] == '.')
 	{
+		form.prec = 0;
 		while ((check_precision(format[++i], &form)) == 1)
 			continue;
 	}

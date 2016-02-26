@@ -21,7 +21,7 @@ void	init_struct(t_struct *form)
 	form->zero = 0;
 	form->space = 0;
 	form->larg = 0;
-	form->prec = 0;
+	form->prec = -1;
 	form->hh = 0;
 	form->h = 0;
 	form->l = 0;
@@ -68,7 +68,7 @@ int		main(void)
 	c = L"我éabcfeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaf";
 	e = L'我';
 	a = -123456789;
-	printf(" / True : %d\n", printf("%# -30.18lX", a));
-	ft_printf(" / My   : %d\n", ft_printf("%# -30.18lX", a));
+	printf(" / True : %d\n", printf("%#-33.18lO", a));
+	ft_printf(" / My   : %d\n", ft_printf("%#-33.18lO", a));
 	return (0);
 }

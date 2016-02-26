@@ -17,14 +17,13 @@ static char	*set_d_0(t_struct *strct, char *str, int nbr0)
 	char	*str0;
 	char	*new;
 	int		i;
+	int		j;
 
+	j = strct->hash == 1 ? 2 : 0;
 	str0 = ft_strnew(nbr0 + 1);
 	i = 0;
-	while (i < nbr0)
-	{
-		str0[i] = '0';
-		i++;
-	}
+	while (i < nbr0 + j)
+		str0[i++] = '0';
 	str0[i] = '\0';
 	new = ft_strjoin(str0, str);
 	return (new);
@@ -45,8 +44,9 @@ static char	*set_d_plus_space(t_struct *strct, char *str, char c)
 {
 	char *new;
 
-	new = ft_strnew(1);
+	new = ft_strnew(1 + 1);
 	new[0] = c;
+	new[1] = '\0';
 	str = ft_strjoin(new, str);
 	return (str);
 }
@@ -65,9 +65,14 @@ static char	*set_moins_d(t_struct *strct, char *str, char *larg)
 static char	*set_hash(t_struct *strct, char *str)
 {
 	char	*new;
+	int		i;
 
-	new = ft_strjoin("0x", str);
-	return (new);
+	i = 0;
+	while (str[i] == ' ')
+		i++;
+	str[i] = '0';
+	str[i + 1] = 'x';
+	return (str);
 }
 
 static char	*set_upper(char *str)
@@ -98,6 +103,10 @@ char	*set_hex(t_struct *strct, va_list va)
 		str = set_d_0(strct, ft_itoa_base(n, 16), strct->prec - ft_count_base(n, 16));
 	else
 		str = ft_itoa_base(n, 16);
+	if (strct->larg > ft_strlen(str) && strct->larg > strct->prec)
+		larg = set_d_larg(strct, str);
+	if (strct->larg != 0 && strct->larg > strct->prec)
+		str = set_moins_d(strct, str, larg);
 	if (strct->hash == 1)
 	{
 		tmp = ft_strdup(str);
@@ -105,14 +114,9 @@ char	*set_hex(t_struct *strct, va_list va)
 	}
 	if (strct->type == 'X')
 	{
-		free(tmp);
 		tmp = set_upper(str);
 		str = tmp;
 	}
-	if (strct->larg > ft_strlen(str) && strct->larg > strct->prec)
-		larg = set_d_larg(strct, str);
-	if (strct->larg != 0 && strct->larg > strct->prec)
-		str = set_moins_d(strct, str, larg);
 	g_ret += ft_strlen(str);
 	return (str);
 }

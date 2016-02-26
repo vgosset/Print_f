@@ -86,9 +86,12 @@ char	*set_octal(t_struct *strct, va_list va)
 	else
 		str = ft_itoa_base(n, 8);
 	if (strct->larg > ft_strlen(str) && strct->larg > strct->prec)
+	{
 		larg = set_d_larg(strct, str);
-	if (strct->larg != 0 && strct->larg > strct->prec)
 		str = set_moins_d(strct, str, larg);
+	}
+//	if (strct->larg != 0 && strct->larg > strct->prec)
+//		str = set_moins_d(strct, str, larg);
 	g_ret += ft_strlen(str);
 	return (str);
 }

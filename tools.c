@@ -32,11 +32,12 @@ char	*strplace(int n, char c)
 	char	*str;
 
 	i = 0;
-	str = ft_strnew(n);
+	str = ft_strnew(n + 1);
 	while (i < n )
 	{
 		str[i] = c;
 		i++;
 	}
+	str[i] = '\0';
 	return (str);
 }

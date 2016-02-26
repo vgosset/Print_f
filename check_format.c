@@ -25,6 +25,7 @@ int		check_format(const char *format)
 		i++;
 	if (format[i] == '.')
 	{
+		form.prec = 0;
 		while ((check_precision(format[++i], &form)) == 1)
 			continue;
 	}
