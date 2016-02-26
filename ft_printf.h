@@ -78,6 +78,7 @@ void			init_struct(t_struct *form);
 void			print_oct(char *mask);
 void			ft_bzero(void *s, size_t n);
 void			checkflags(t_struct *form, char a, char b);
+void			set_c(t_struct *form, va_list va);
 
 char			*ft_itoa(int n);
 char			*ft_itoa_base(long long nbr, int base);
@@ -87,7 +88,8 @@ char			*ft_strnew(size_t size);
 char			*ui_to_bits(unsigned int u);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strdup(const char *s1);
-char			*strplace(int n, char c);
+char			*place(int n, char c);
+char			*place_s(t_struct *form, int n, char c);
 char			*set_d(t_struct *form, va_list va);
 char			*set_octal(t_struct *form, va_list va);
 char			*set_hex(t_struct *form, va_list va);

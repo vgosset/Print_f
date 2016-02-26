@@ -33,7 +33,9 @@ static char	*set_d_0(t_struct *strct, char *str, int nbr0, long long n)
 		i++;
 	}
 	str0[i] = '\0';
-	if (n < 0)
+	if (n == -2147483648)
+		str = ft_strdup("2147483648");
+	else if (n < 0 && n > -2147483648)
 		str = ft_itoa(-n);
 	new = ft_strjoin(str0, str);
 	return (new);
@@ -44,9 +46,9 @@ static char	*set_d_larg(t_struct *strct, char *str)
 	char *larg;
 
 	if (strct->zero == 1 && strct->prec == -1)
-		larg = strplace(strct->larg - ft_strlen(str), '0');
+		larg = place(strct->larg - ft_strlen(str), '0');
 	else
-		larg = strplace(strct->larg - ft_strlen(str), ' ');
+		larg = place(strct->larg - ft_strlen(str), ' ');
 	return (larg);
 }
 

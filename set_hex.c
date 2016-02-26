@@ -34,9 +34,9 @@ static char	*set_d_larg(t_struct *strct, char *str)
 	char *larg;
 
 	if (strct->zero == 1 && strct->prec == -1)
-		larg = strplace(strct->larg - ft_strlen(str), '0');
+		larg = place(strct->larg - ft_strlen(str), '0');
 	else
-		larg = strplace(strct->larg - ft_strlen(str), ' ');
+		larg = place(strct->larg - ft_strlen(str), ' ');
 	return (larg);
 }
 

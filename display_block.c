@@ -14,10 +14,8 @@
 
 int	display_block(t_struct *form, va_list va, int i)
 {
-	char	*ret;
 	char	*str;
 
-	ret = NULL;
 	str = NULL;
 	if (form->type == 's' || form->type == 'S')
 		/*ret = */check_display_block_s(form, va);
@@ -32,7 +30,8 @@ int	display_block(t_struct *form, va_list va, int i)
 	else if (form->type == 'x' || form->type == 'X')
 		str = set_hex(form, va);
 	else if (form->type == 'c' || form->type == 'C')
-		ret = check_display_block_c(form, va);
-	ft_putstr(str);
+		set_c(form, va);
+	if (form->type == 'd')
+		ft_putstr(str);
 	return (i);
 }

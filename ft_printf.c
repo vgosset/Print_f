@@ -63,12 +63,14 @@ int		main(void)
 	setlocale(LC_ALL, "fr_FR.UTF-8");
 	wchar_t	*c;
 	wchar_t e;
-	unsigned long	a;
+	char	f;
+	long int	a;
 
+	f = 'i';
 	c = L"我éabcfeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaf";
 	e = L'我';
-	a = -123456789;
-	printf(" / True : %d\n", printf("%#-33.18lO", a));
-	ft_printf(" / My   : %d\n", ft_printf("%#-33.18lO", a));
+	a = -2147483648;
+	printf(" / True : %d\n", printf("%-30C", e));
+	ft_printf(" / My   : %d\n", ft_printf("%-30C", e));
 	return (0);
 }

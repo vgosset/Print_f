@@ -26,14 +26,31 @@ void	checkflags(t_struct *strct, char a, char b)
 	}
 }
 
-char	*strplace(int n, char c)
+char	*place(int n, char c)
 {
 	int		i;
 	char	*str;
 
 	i = 0;
 	str = ft_strnew(n + 1);
-	while (i < n )
+	while (i < n)
+	{
+		str[i] = c;
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+char	*place_s(t_struct *form, int n, char c)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = ft_strnew(n + 1);
+	n = n - 2;
+	while (i < n)
 	{
 		str[i] = c;
 		i++;
