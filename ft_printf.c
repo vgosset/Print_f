@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/27 03:50:26 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/27 04:52:45 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <locale.h>
@@ -70,7 +70,7 @@ int		main(void)
 	c = L"我éaaa";
 	e = L'我';
 	a = 2147483648;
-	printf(" / True : %d\n", printf("%#039.3zu", a));
-	ft_printf(" / My   : %d\n", ft_printf("%#039.3zu", a));
+	printf(" / True : %d\n", printf("%#039p", c));
+	ft_printf(" / My   : %d\n", ft_printf("%#039p", c));
 	return (0);
 }

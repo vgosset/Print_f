@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:51:57 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/27 03:46:15 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/27 04:33:41 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	display_block(t_struct *form, va_list va, int i)
 		set_wchar_s(form, va);
 	else if (form->type == 's')
 		set_s(form, va);
-	/*else if (form->type == 'p')
-		ret = ;*/
+	else if (form->type == 'p')
+		str = set_p(form, va);
 	else if (form->type == 'd' || form->type == 'D' || form->type == 'i')
 		str = set_d(form, va);
 	else if (form->type == 'o' || form->type == 'O')
