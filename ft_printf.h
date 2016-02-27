@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/27 04:55:05 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/27 05:23:59 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int				ft_isspace(int c);
 int				ft_count(long n);
 int				ft_count_base(unsigned long n, int base);
 int				ft_count_wchar(unsigned int wchar);
-int				ft_atoi(const char *str);
 
 long			ft_power(long nb, int i);
 long long		check_display_block_d(t_struct *form, va_list va);
@@ -62,19 +61,11 @@ unsigned long	check_display_block_p(t_struct *form, va_list va);
 
 void			ft_putint(int c);
 void			ft_putnbr(int n);
-void			ft_putunsigned_nbr(unsigned long n);
-void			ft_putlong_nbr(long nbr);
-void			ft_putsignedchar_nbr(signed char nbr);
-void			ft_putshort_nbr(short n);
-void			ft_puthex(unsigned long nbr);
-void			ft_puthex_x(unsigned long nbr);
-void			ft_putoctal(unsigned long nbr);
 void			ft_putchar(char c);
 void			ft_putwchar(wchar_t c);
 void			ft_putstr(char const *s);
 void			ft_putwstr(wchar_t *str);
 void			set_format(const char *format, va_list va);
-void			check_display_block_s(t_struct *form, va_list va);
 void			check_size_modifier(const char *format, t_struct *form);
 void			init_struct(t_struct *form);
 void			print_oct(char *mask);
@@ -86,7 +77,6 @@ void			set_wchar_s(t_struct *form, va_list va);
 
 char			*ft_itoa(int n);
 char			*ft_itoa_base(long long nbr, int base);
-char			*unsigned_itoa_base(unsigned long nbr, int base);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strnew(size_t size);
 char			*ui_to_bits(unsigned int u);
@@ -99,7 +89,6 @@ char			*set_octal(t_struct *form, va_list va);
 char			*set_hex(t_struct *form, va_list va);
 char			*set_u(t_struct *form, va_list va);
 char			*set_p(t_struct *form, va_list va);
-char			*check_display_block_c(t_struct *form, va_list va);
 
 char			**uni_mask(char *bits);
 char			**uni_mask_1(char *bits, char *mask, size_t b_len, int m_len);
