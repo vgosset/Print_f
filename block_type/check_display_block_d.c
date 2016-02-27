@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 16:50:58 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/25 22:45:50 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/27 05:26:50 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static long long	check_display_block_d_2(t_struct *form, va_list va)
 	return (p);
 }
 
-long long 			check_display_block_d(t_struct *form, va_list va)
+long long			check_display_block_d(t_struct *form, va_list va)
 {
 	long long	p;
 

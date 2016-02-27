@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/27 05:25:19 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/02/27 05:25:32 by jle-quer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char	*unsigned_itoa_base(unsigned long nbr, int base)
@@ -26,7 +38,7 @@ char	*unsigned_itoa_base(unsigned long nbr, int base)
 	return (ret);
 }
 
-char		*ft_itoa_base(long long nbr, int base)
+char	*ft_itoa_base(long long nbr, int base)
 {
 	char			*ret;
 	int				size;
