@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:51:57 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/25 17:21:05 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/27 03:46:15 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	display_block(t_struct *form, va_list va, int i)
 	char	*str;
 
 	str = NULL;
-	if (form->type == 's' || form->type == 'S')
-		/*ret = */check_display_block_s(form, va);
+	if (form->type == 'S' || (form->type == 's' && form->l == 1))
+		set_wchar_s(form, va);
+	else if (form->type == 's')
+		set_s(form, va);
 	/*else if (form->type == 'p')
 		ret = ;*/
 	else if (form->type == 'd' || form->type == 'D' || form->type == 'i')
@@ -26,12 +28,13 @@ int	display_block(t_struct *form, va_list va, int i)
 	else if (form->type == 'o' || form->type == 'O')
 		str = set_octal(form, va);
 	else if (form->type == 'u' || form->type == 'U')
-		str = check_display_block_u(form, va);
+		str = set_u(form, va);
 	else if (form->type == 'x' || form->type == 'X')
 		str = set_hex(form, va);
 	else if (form->type == 'c' || form->type == 'C')
 		set_c(form, va);
-	if (form->type == 'd')
+	if (form->type != 'c' && form->type != 'C'
+			&& form->type != 's' && form->type != 'S')
 		ft_putstr(str);
 	return (i);
 }

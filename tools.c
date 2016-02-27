@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 16:09:07 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/24 16:10:14 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/27 03:41:29 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	*place_s(t_struct *form, int n, char c)
 
 	i = 0;
 	str = ft_strnew(n + 1);
-	n = n - 2;
 	while (i < n)
 	{
 		str[i] = c;
