@@ -55,7 +55,7 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC_PATH = ./srcs
 
-OBJ_PATH = ./
+OBJ_PATH = ./obj
 
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 
