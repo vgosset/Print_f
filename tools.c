@@ -42,7 +42,7 @@ char	*place(int n, char c)
 	return (str);
 }
 
-char	*place_s(t_struct *form, int n, char c)
+char	*place_s(int n, char c)
 {
 	int		i;
 	char	*str;
@@ -55,5 +55,19 @@ char	*place_s(t_struct *form, int n, char c)
 		i++;
 	}
 	str[i] = '\0';
+	return (str);
+}
+
+char	*set_upper(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i])
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] -= 32;
+		i++;
+	}
 	return (str);
 }

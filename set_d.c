@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static char	*set_d_0(t_struct *strct, char *str, int nbr0, long long n)
+static char	*set_d_0(char *str, int nbr0, long long n)
 {
 	char	*str0;
 	char	*new;
@@ -52,7 +52,7 @@ static char	*set_d_larg(t_struct *strct, char *str)
 	return (larg);
 }
 
-static char	*set_d_plus_space(t_struct *strct, char *str, char c)
+static char	*set_d_plus_space(char *str, char c)
 {
 	char *new;
 
@@ -83,14 +83,14 @@ char	*set_d(t_struct *strct, va_list va)
 	checkflags(strct, '+', ' ');
 	n = check_display_block_d(strct, va);
 	if (strct->prec > ft_count(n))
-		str = set_d_0(strct, ft_itoa(n), strct->prec - ft_count(n), n);
+		str = set_d_0(ft_itoa(n), strct->prec - ft_count(n), n);
 	else
 		str = ft_itoa(n);
 	if (strct->plus == 1 && n > 0)
-		str = set_d_plus_space(strct, str, '+');
+		str = set_d_plus_space(str, '+');
 	if (strct->space == 1 && n > 0)
-		str = set_d_plus_space(strct, str, ' ');
-	if (strct->larg > ft_strlen(str) && strct->larg > strct->prec)
+		str = set_d_plus_space(str, ' ');
+	if (strct->larg > (int)ft_strlen(str) && strct->larg > strct->prec)
 		larg = set_d_larg(strct, str);
 	if (strct->larg != 0  && strct->larg > strct->prec)
 		str = set_moins_d(strct, str, larg);

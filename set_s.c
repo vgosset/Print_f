@@ -12,10 +12,10 @@
 
 #include "ft_printf.h"
 
-static char	*set_larg(t_struct *strct, char *str)
+static char	*set_larg(t_struct *form, char *str)
 {
-	if (strct->larg > (int)ft_strlen(str))
-		str = place_s(strct, strct->larg - (int)ft_strlen(str), ' ');
+	if (form->larg > (int)ft_strlen(str))
+		str = place_s(form->larg - (int)ft_strlen(str), ' ');
 	return (str);
 }
 

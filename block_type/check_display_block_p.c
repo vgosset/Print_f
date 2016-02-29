@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-unsigned long	check_display_block_p(t_struct *form, va_list va)
+unsigned long	check_display_block_p(va_list va)
 {
 	unsigned long	p;
 

@@ -53,35 +53,29 @@ SRC_NAME =	srcs/ft_atoi.c \
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
-SRC_PATH = ./srcs
-
-OBJ_PATH = ./obj
-
-SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
-
-OBJ = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
-
 NAME = libftprintf.a
-
-CFLAGS = -Wall -Wextra -g
 
 INC_PATH = ./
 
+CC = gcc
+
+CFLAGS = -Wall -Wextra
+
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(NAME): $(OBJ_NAME)
+	@ar rc $(NAME) $(OBJ_NAME)
+	@ranlib $(NAME)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	gcc $(CFLAGS) -c $< -o $@ -I $(INC_PATH)
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_PATH)
 
 clean:
-	rm -rf ./obj
+	@rm -rf $(OBJ_NAME)
 
-fclean:clean
-	rm -f $(NAME)
+fclean: clean
+	@rm -f $(NAME)
 
-re:fclean all
+re: fclean all
 
 .PHONY: all clean fclean re

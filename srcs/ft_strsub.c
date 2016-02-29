@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 13:09:17 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/27 01:28:29 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/02/27 01:25:44 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 		i++;
 	while (j < len)
 	{
-		new[j] = ((char *)s)[i];
+		if (s[i] == '\0')
+			new[j] = '\0';
+		else
+			new[j] = s[i];
 		i++;
 		j++;
 	}

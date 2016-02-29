@@ -57,7 +57,7 @@ long long		check_display_block_d(t_struct *form, va_list va);
 uintmax_t		check_display_block_o(t_struct *form, va_list va);
 uintmax_t		check_display_block_x(t_struct *form, va_list va);
 uintmax_t		check_display_block_u(t_struct *form, va_list va);
-unsigned long	check_display_block_p(t_struct *form, va_list va);
+unsigned long	check_display_block_p(va_list va);
 
 void			ft_putint(int c);
 void			ft_putnbr(int n);
@@ -83,7 +83,8 @@ char			*ui_to_bits(unsigned int u);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strdup(const char *s1);
 char			*place(int n, char c);
-char			*place_s(t_struct *form, int n, char c);
+char			*place_s(int n, char c);
+char			*set_upper(char *str);
 char			*set_d(t_struct *form, va_list va);
 char			*set_octal(t_struct *form, va_list va);
 char			*set_hex(t_struct *form, va_list va);

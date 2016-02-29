@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static char	*set_d_0(t_struct *strct, char *str, int nbr0)
+static char	*set_d_0(char *str, int nbr0)
 {
 	char	*str0;
 	char	*new;
@@ -41,15 +41,15 @@ static char	*set_d_larg(t_struct *strct, char *str)
 	return (larg);
 }
 
-static char	*set_d_plus_space(t_struct *strct, char *str, char c)
-{
-	char *new;
+//static char	*set_d_plus_space(char *str, char c)
+//{
+//	char *new;
 
-	new = ft_strnew(1);
-	new[0] = c;
-	str = ft_strjoin(new, str);
-	return (str);
-}
+//	new = ft_strnew(1);
+//	new[0] = c;
+//	str = ft_strjoin(new, str);
+//	return (str);
+//}
 
 static char	*set_moins_d(t_struct *strct, char *str, char *larg)
 {
@@ -70,13 +70,13 @@ char		*set_p(t_struct *strct, va_list va)
 
 	checkflags(strct, '-', '0');
 	checkflags(strct, '+', ' ');
-	n = check_display_block_p(strct, va);
+	n = check_display_block_p(va);
 	if (strct->prec > ft_count_base(n, 16))
-		str = ft_strjoin("0x", set_d_0(strct, ft_itoa_base(n, 16),
+		str = ft_strjoin("0x", set_d_0(ft_itoa_base(n, 16),
 				strct->prec - ft_count_base(n, 16)));
 	else
 		str = ft_strjoin("0x", ft_itoa_base(n, 16));
-	if (strct->larg > ft_strlen(str) && strct->larg > strct->prec)
+	if (strct->larg > (int)ft_strlen(str) && strct->larg > strct->prec)
 	{
 		larg = set_d_larg(strct, str);
 		str = set_moins_d(strct, str, larg);

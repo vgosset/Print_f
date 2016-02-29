@@ -54,23 +54,22 @@ int		ft_printf(const char *format, ...)
 	va_end(va);
 	return (g_ret);
 }
-
 #include <stdio.h>
 #include <limits.h>
-
+/*
 int		main(void)
 {
 	setlocale(LC_ALL, "fr_FR.UTF-8");
 	wchar_t	*c;
 	wchar_t e;
 	char	*f;
-	size_t	a;
+	int	a;
 
 	f = "Abcdef";
 	c = L"我éaaa";
 	e = L'我';
-	a = 2147483648;
-	printf(" / True : %d\n", printf("%lc", e));
-	ft_printf(" / My   : %d\n", ft_printf("%lc", e));
+	a = 42;
+	printf(" / True : %d\n", printf("%#-08x", 1));
+	ft_printf(" / My   : %d\n", ft_printf("%#-08x", 1));
 	return (0);
-}
+}*/

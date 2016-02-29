@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-static char	*set_d_0(t_struct *strct, char *str, int nbr0)
+static char	*set_d_0(t_struct *form, char *str, int nbr0)
 {
 	char	*str0;
 	char	*new;
 	int		i;
 	int		j;
 
-	j = strct->hash == 1 ? 2 : 0;
+	j = form->hash == 1 ? 2 : 0;
 	str0 = ft_strnew(nbr0 + 1);
 	i = 0;
 	while (i < nbr0 + j)
@@ -29,87 +29,77 @@ static char	*set_d_0(t_struct *strct, char *str, int nbr0)
 	return (new);
 }
 
-static char	*set_d_larg(t_struct *strct, char *str)
+static char	*set_d_larg(t_struct *form, char *str)
 {
 	char *larg;
 
-	if (strct->zero == 1 && strct->prec == -1)
-		larg = place(strct->larg - ft_strlen(str), '0');
+	if (form->zero == 1 && form->prec == -1)
+		larg = place(form->larg - ft_strlen(str), '0');
 	else
-		larg = place(strct->larg - ft_strlen(str), ' ');
+		larg = place(form->larg - ft_strlen(str), ' ');
 	return (larg);
 }
 
-static char	*set_d_plus_space(t_struct *strct, char *str, char c)
-{
-	char *new;
-
-	new = ft_strnew(1 + 1);
-	new[0] = c;
-	new[1] = '\0';
-	str = ft_strjoin(new, str);
-	return (str);
-}
-
-static char	*set_moins_d(t_struct *strct, char *str, char *larg)
+static char	*set_moins_d(t_struct *form, char *str, char *larg)
 {
 	char	*new;
 
-	if (strct->moins == 0)
+	if (form->moins == 0)
 		new = ft_strjoin(larg, str);
 	else
 		new = ft_strjoin(str, larg);
 	return (new);
 }
 
-static char	*set_hash(t_struct *strct, char *str)
+static char	*set_hash(t_struct *form, char *str)
 {
-	char	*new;
+	char	*tmp;
 	int		i;
 
 	i = 0;
-	while (str[i] == ' ')
-		i++;
-	str[i] = '0';
-	str[i + 1] = 'x';
-	return (str);
-}
-
-static char	*set_upper(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
+	if (str[i] == ' ')
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] -= 32;
-		i++;
+		while (str[i] == ' ')
+			i++;
+		str[i] = '0';
+		str[i + 1] = 'x';
+	}
+	else if (str[i] == '0' && str[i + 1] == '0')
+	{
+		str[i] = '0';
+		str[i + 1] = 'x';
+	}
+	else
+		str = ft_strjoin("0x", str);
+	if (form->larg > 0 && (int)ft_strlen(str) > form->larg)
+	{
+		tmp = ft_strsub(str, 0, ft_strlen(str) -2);
+		str = ft_strdup(tmp);
 	}
 	return (str);
 }
 
-char	*set_hex(t_struct *strct, va_list va)
+char	*set_hex(t_struct *form, va_list va)
 {
 	char		*tab[3];
 	uintmax_t	n;
 
-	checkflags(strct, '-', '0');
-	checkflags(strct, '+', ' ');
-	n = check_display_block_x(strct, va);
-	tab[1] = strct->prec > ft_count_base(n, 16) ?
-		set_d_0(strct, ft_itoa_base(n, 16), strct->prec -
+	checkflags(form, '-', '0');
+	checkflags(form, '+', ' ');
+	n = check_display_block_x(form, va);
+	tab[1] = form->prec > ft_count_base(n, 16) ?
+		set_d_0(form, ft_itoa_base(n, 16), form->prec -
 				ft_count_base(n, 16)) : ft_itoa_base(n, 16);
-	if (strct->larg > ft_strlen(tab[1]) && strct->larg > strct->prec)
-		tab[0] = set_d_larg(strct, tab[1]);
-	if (strct->larg != 0 && strct->larg > strct->prec)
-		tab[1] = set_moins_d(strct, tab[1], tab[0]);
-	if (strct->hash == 1)
+	if (form->larg > (int)ft_strlen(tab[1]) && form->larg > form->prec)
+		tab[0] = set_d_larg(form, tab[1]);
+	if (form->larg != 0 && form->larg > form->prec)
+		tab[1] = set_moins_d(form, tab[1], tab[0]);
+	if (form->hash == 1)
 	{
 		tab[2] = ft_strdup(tab[1]);
-		tab[1] = set_hash(strct, tab[2]);
+		tab[1] = set_hash(form, tab[2]);
 	}
-	if (strct->type == 'X')
+	if (form->type == 'X')
 	{
 		tab[2] = set_upper(tab[1]);
 		tab[1] = tab[2];
