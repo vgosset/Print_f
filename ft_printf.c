@@ -53,10 +53,10 @@ int		ft_printf(const char *format, ...)
 */	set_format(format, va);
 	va_end(va);
 	return (g_ret);
-}
+}/*
 #include <stdio.h>
 #include <limits.h>
-/*
+
 int		main(void)
 {
 	setlocale(LC_ALL, "fr_FR.UTF-8");
@@ -69,7 +69,7 @@ int		main(void)
 	c = L"我éaaa";
 	e = L'我';
 	a = 42;
-	printf(" / True : %d\n", printf("%#-08x", 1));
-	ft_printf(" / My   : %d\n", ft_printf("%#-08x", 1));
+	printf(" / True : %d\n", printf("%03.2d", -1));
+	ft_printf(" / My   : %d\n", ft_printf("%03.2d", -1));
 	return (0);
 }*/

@@ -14,9 +14,12 @@
 
 static char	*set_larg(t_struct *form, char *str)
 {
+	char	*new;
+
+	new = NULL;
 	if (form->larg > (int)ft_strlen(str))
-		str = place_s(form->larg - (int)ft_strlen(str), ' ');
-	return (str);
+		new = place_s(form->larg - (int)ft_strlen(str), ' ');
+	return (new);
 }
 
 void		set_s(t_struct *form, va_list va)
@@ -33,7 +36,7 @@ void		set_s(t_struct *form, va_list va)
 		str = ft_strdup(tmp);
 	if (form->larg > (int)ft_strlen(str))
 		larg = set_larg(form, str);
-	if (form->prec == -1 && form->larg != 0)
+	if (form->prec == -1 && form->larg != 0 && form->moins == 0)
 		tmp = ft_strjoin(larg, str);
 	else if (form->moins == 1)
 		tmp = ft_strjoin(str, larg);

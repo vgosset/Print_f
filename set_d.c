@@ -41,12 +41,16 @@ static char	*set_d_0(char *str, int nbr0, long long n)
 	return (new);
 }
 
-static char	*set_d_larg(t_struct *strct, char *str)
+static char	*set_d_larg(t_struct *strct, char *str, long long n)
 {
 	char *larg;
 
-	if (strct->zero == 1 && strct->prec == -1)
-		larg = place(strct->larg - ft_strlen(str), '0');
+	if (strct->zero == 1)
+	{
+		larg = place(strct->larg - (int)ft_strlen(str) + 1, '0');
+		if (n < 0)
+			larg[0] = '-';
+	}
 	else
 		larg = place(strct->larg - ft_strlen(str), ' ');
 	return (larg);
@@ -91,7 +95,10 @@ char	*set_d(t_struct *strct, va_list va)
 	if (strct->space == 1 && n > 0)
 		str = set_d_plus_space(str, ' ');
 	if (strct->larg > (int)ft_strlen(str) && strct->larg > strct->prec)
-		larg = set_d_larg(strct, str);
+	{
+		larg = set_d_larg(strct, str, n);
+		str = n < 0 && strct->zero == 1 ? str + 1 : str;
+	}
 	if (strct->larg != 0  && strct->larg > strct->prec)
 		str = set_moins_d(strct, str, larg);
 	g_ret += ft_strlen(str);
