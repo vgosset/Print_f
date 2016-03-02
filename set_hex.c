@@ -6,38 +6,46 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 16:58:18 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/03/02 13:31:21 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/03/02 17:12:30 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*set_d_0(t_struct *form, char *str, int nbr0)
+static char	*set_d_0(t_struct *form, char *str)
 {
 	char	*str0;
-	char	*new;
+	int		nbr0;
 	int		i;
 	int		j;
 
+	if (form->prec == -1 || form->prec < (int)ft_strlen(str))
+		return (NULL);
 	j = form->hash == 1 ? 2 : 0;
+	nbr0 = form->prec - (int)ft_strlen(str);
 	str0 = ft_strnew(nbr0 + 1);
 	i = 0;
 	while (i < nbr0 + j)
 		str0[i++] = '0';
 	str0[i] = '\0';
-	new = ft_strjoin(str0, str);
-	form->zero = 0;
-	return (new);
+	return (str0);
 }
 
 static char	*set_d_larg(t_struct *form, char *str)
 {
-	char *larg;
+	char	*larg;
+	int		j;
+	int		x;
 
+	j = form->prec > -1 ? form->prec : 0;
+	x = form->hash == 1 ? 2 : 0;
+	larg = NULL;
+	if (form->larg == 0)
+		return (NULL);
 	if (form->zero == 1 && form->prec == -1)
-		larg = place(form->larg - ft_strlen(str), '0');
+		larg = place(form->larg - (int)ft_strlen(str) - x, '0');
 	else
-		larg = place(form->larg - ft_strlen(str), ' ');
+		larg = place(form->larg - ((int)ft_strlen(str) - j + x), ' ');
 	return (larg);
 }
 
@@ -47,7 +55,7 @@ static char	*set_moins_d(t_struct *form, char *str, char *larg)
 
 	if (form->moins == 0 || form->larg > form->prec)
 	{
-		if (form->hash == 1 && form->zero == 0)
+		if (form->hash == 1 && form->zero == 0 && form->prec == -1)
 		{
 			new = ft_strjoin(ft_strjoin(larg + 2, "0x"), str);
 			form->hash = 0;
@@ -59,7 +67,7 @@ static char	*set_moins_d(t_struct *form, char *str, char *larg)
 		}
 		else if (form->hash == 1 && form->zero == 1 && form->prec > -1)
 		{
-			new = ft_strjoin(ft_strjoin(larg + 2, "0x"), str);
+			new = ft_strjoin(ft_strjoin(larg, "0x"), str + 2);
 			form->hash = 0;
 		}
 		else
@@ -70,54 +78,46 @@ static char	*set_moins_d(t_struct *form, char *str, char *larg)
 	return (new);
 }
 
-static char	*set_hash(t_struct *form, char *str)
+static char	*set_hash(t_struct *form, char *str, char *prec, char *larg)
 {
 	char	*tmp;
-	int		i;
 
-	i = 0;
-	if (str[i] == ' ')
+	tmp = ft_strjoin(prec, str);
+	if (form->hash == 1 && form->zero == 0)
+		tmp = prec == NULL ? ft_strjoin("0x", tmp) : ft_strjoin("0x", tmp + 2);
+	if (form->larg > (int)ft_strlen(tmp))
 	{
-		while (str[i] == ' ')
-			i++;
-		str[i] = '0';
-		str[i + 1] = 'x';
+		if (form->zero == 1)
+		{
+			if (form->hash == 1)
+			{
+				tmp = ft_strjoin("0x", larg);
+			}
+			tmp = form->hash == 0 ? tmp = ft_strjoin(larg, tmp) : ft_strjoin(tmp, str);
+		}
+		else if (form->moins == 1)
+			tmp = ft_strjoin(tmp, larg);
+		else
+			tmp = ft_strjoin(larg, tmp);
 	}
-	else if (str[i] == '0' && str[i + 1] == '0')
-	{
-		str[i] = '0';
-		str[i + 1] = 'x';
-	}
-	else
-		str = ft_strjoin("0x", str);
-	if (form->larg > 0 && (int)ft_strlen(str) > form->larg)
-	{
-		tmp = ft_strsub(str, 0, ft_strlen(str) -2);
-		str = ft_strdup(tmp);
-	}
-	return (str);
+	return (tmp);
 }
 
 char	*set_hex(t_struct *form, va_list va)
 {
-	char		*tab[3];
+	char		*tab[4];
 	uintmax_t	n;
 
 	checkflags(form, '-', '0');
 	checkflags(form, '+', ' ');
 	n = check_display_block_x(form, va);
 	n == 0 && form->hash == 1 ? form->hash = 0 : 42;
-	tab[1] = form->prec > ft_count_base(n, 16) ?
-		set_d_0(form, ft_itoa_base(n, 16), form->prec -
-				ft_count_base(n, 16)) : ft_itoa_base(n, 16);
-	if (form->larg > (int)ft_strlen(tab[1]) && form->larg > form->prec)
-		tab[0] = set_d_larg(form, tab[1]);
-	if (form->larg != 0 && form->larg > form->prec)
-		tab[1] = set_moins_d(form, tab[1], tab[0]);
-	if (form->hash == 1)
-		tab[1] = set_hash(form, ft_strdup(tab[1]));
+	tab[0] = ft_itoa_base(n, 16);
+	tab[1] = set_d_0(form, tab[0]);
+	tab[2] = set_d_larg(form, tab[0]);
+	tab[3] = set_hash(form, tab[0], tab[1], tab[2]);
 	if (form->type == 'X')
-		tab[1] = set_upper(ft_strdup(tab[1]));
-	g_ret += ft_strlen(tab[1]);
-	return (tab[1]);
+		tab[3] = set_upper(tab[3]);
+	g_ret += ft_strlen(tab[3]);
+	return (tab[3]);
 }

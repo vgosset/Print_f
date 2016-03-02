@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/03/02 13:31:27 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/03/02 17:11:41 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <locale.h>
@@ -53,7 +53,7 @@ int		ft_printf(const char *format, ...)
 */	set_format(format, va);
 	va_end(va);
 	return (g_ret);
-}
+}/*
 #include <stdio.h>
 #include <limits.h>
 
@@ -69,7 +69,7 @@ int		main(void)
 	c = L"我éaaa";
 	e = L'我';
 	a = 42;
-	printf(" / True : %d\n", printf("%#08.4X", 42));
-	ft_printf(" / My   : %d\n", ft_printf("%#08.4X", 42));
+	printf(" / True : %d\n", printf("%08x", 500));
+	ft_printf(" / My   : %d\n", ft_printf("%08x", 500));
 	return (0);
-}
+}*/
