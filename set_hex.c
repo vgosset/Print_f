@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 16:58:18 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/02/26 22:56:21 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/03/02 13:31:21 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static char	*set_d_0(t_struct *form, char *str, int nbr0)
 		str0[i++] = '0';
 	str0[i] = '\0';
 	new = ft_strjoin(str0, str);
+	form->zero = 0;
 	return (new);
 }
 
@@ -44,8 +45,26 @@ static char	*set_moins_d(t_struct *form, char *str, char *larg)
 {
 	char	*new;
 
-	if (form->moins == 0)
-		new = ft_strjoin(larg, str);
+	if (form->moins == 0 || form->larg > form->prec)
+	{
+		if (form->hash == 1 && form->zero == 0)
+		{
+			new = ft_strjoin(ft_strjoin(larg + 2, "0x"), str);
+			form->hash = 0;
+		}
+		else if (form->hash == 1 && form->zero == 1 && form->prec == -1)
+		{
+			new = ft_strjoin(ft_strjoin("0x", larg + 2), str);
+			form->hash = 0;
+		}
+		else if (form->hash == 1 && form->zero == 1 && form->prec > -1)
+		{
+			new = ft_strjoin(ft_strjoin(larg + 2, "0x"), str);
+			form->hash = 0;
+		}
+		else
+			new = ft_strjoin(larg, str);
+	}
 	else
 		new = ft_strjoin(str, larg);
 	return (new);
@@ -87,6 +106,7 @@ char	*set_hex(t_struct *form, va_list va)
 	checkflags(form, '-', '0');
 	checkflags(form, '+', ' ');
 	n = check_display_block_x(form, va);
+	n == 0 && form->hash == 1 ? form->hash = 0 : 42;
 	tab[1] = form->prec > ft_count_base(n, 16) ?
 		set_d_0(form, ft_itoa_base(n, 16), form->prec -
 				ft_count_base(n, 16)) : ft_itoa_base(n, 16);
@@ -95,15 +115,9 @@ char	*set_hex(t_struct *form, va_list va)
 	if (form->larg != 0 && form->larg > form->prec)
 		tab[1] = set_moins_d(form, tab[1], tab[0]);
 	if (form->hash == 1)
-	{
-		tab[2] = ft_strdup(tab[1]);
-		tab[1] = set_hash(form, tab[2]);
-	}
+		tab[1] = set_hash(form, ft_strdup(tab[1]));
 	if (form->type == 'X')
-	{
-		tab[2] = set_upper(tab[1]);
-		tab[1] = tab[2];
-	}
+		tab[1] = set_upper(ft_strdup(tab[1]));
 	g_ret += ft_strlen(tab[1]);
 	return (tab[1]);
 }
