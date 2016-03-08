@@ -5,13 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/18 17:26:19 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/03/03 14:25:20 by jle-quer         ###   ########.fr       */
+/*   Created: 2016/03/08 11:10:52 by jle-quer          #+#    #+#             */
+/*   Updated: 2016/03/08 15:21:52 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <locale.h>
 #include <wchar.h>
 #include "ft_printf.h"
+
 void	init_struct(t_struct *form)
 {
 	form->block = NULL;
@@ -34,12 +36,12 @@ void	init_struct(t_struct *form)
 int		ft_printf(const char *format, ...)
 {
 	va_list		va;
-	int			i;
+//	int			i;
 
 	g_ret = 0;
 	va_start(va, format);
-	i = 0;
-/*	while (format[i])
+	/*i = 0;
+	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1] == '%')
 			i++;
@@ -49,8 +51,8 @@ int		ft_printf(const char *format, ...)
 				return (-1);
 		}
 		i++;
-	}
-*/	set_format(format, va);
+	}*/
+	set_format(format, va);
 	va_end(va);
 	return (g_ret);
 }/*
@@ -69,7 +71,7 @@ int		main(void)
 	c = L"我éaaa";
 	e = L'我';
 	a = 42;
-	printf(" / True : %d\n", printf("%#5.2x", 5));
-	ft_printf(" / My   : %d\n", ft_printf("%#5.2x", 5));
+	printf(" / True : %d\n", printf("%zu, %llu", 0, ULLONG_MAX));
+	ft_printf(" / My   : %d\n", ft_printf("%zu, %llu", 0, ULLONG_MAX));
 	return (0);
 }*/

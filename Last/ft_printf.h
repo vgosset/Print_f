@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 12:24:47 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/03/03 13:38:44 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/03/08 15:18:04 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <wchar.h>
 
 typedef struct	s_struct
 {
@@ -75,8 +76,14 @@ void			set_c(t_struct *form, va_list va);
 void			set_s(t_struct *form, va_list va);
 void			set_wchar_s(t_struct *form, va_list va);
 
+char			*set_moins_d_2(t_struct *form, char *str, int n, char *larg);
+char			*set_moins_d_norm(t_struct *form, char *s, char *larg, int n);
+char			*set_d_0_neg(char *str, int nbr0, long long n);
+char			*set_d_plus_space(char *str, char c);
+char			*set_larg(t_struct *form, char *str);
 char			*ft_itoa(int n);
-char			*ft_itoa_base(long long nbr, int base);
+char			*ft_itoa_base(intmax_t nbr, int base);
+char			*unsigned_itoa_base(uintmax_t nbr, int base);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strnew(size_t size);
 char			*ui_to_bits(unsigned int u);
@@ -90,6 +97,7 @@ char			*set_octal(t_struct *form, va_list va);
 char			*set_hex(t_struct *form, va_list va);
 char			*set_u(t_struct *form, va_list va);
 char			*set_p(t_struct *form, va_list va);
+char			*set_tag(t_struct *form);
 
 char			**uni_mask(char *bits);
 char			**uni_mask_1(char *bits, char *mask, size_t b_len, int m_len);

@@ -6,7 +6,7 @@
 /*   By: jle-quer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 18:51:57 by jle-quer          #+#    #+#             */
-/*   Updated: 2016/03/03 15:04:54 by jle-quer         ###   ########.fr       */
+/*   Updated: 2016/03/03 20:02:41 by jle-quer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	display_block(t_struct *form, va_list va, int i)
 	else if (form->type == 'c' || form->type == 'C')
 		set_c(form, va);
 	else if (form->type == '%')
-		set_%(form, va);
+		str = set_tag(form);
 	if (form->type != 'c' && form->type != 'C'
 			&& form->type != 's' && form->type != 'S')
 		ft_putstr(str);
