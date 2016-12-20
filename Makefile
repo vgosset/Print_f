@@ -62,7 +62,7 @@ INC_PATH = ./
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
